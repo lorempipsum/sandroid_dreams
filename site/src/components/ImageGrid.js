@@ -8,7 +8,7 @@ const main = {
 const imageGrid = {
   display: 'grid',
   gridTemplateColumns:
-    '1fr 1fr 1fr 1fr 1fr 1fr',
+    '1fr 1fr 1fr 1fr 1fr',
   gridTemplateRows: 'auto',
 };
 

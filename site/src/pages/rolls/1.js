@@ -37,7 +37,21 @@ export const query = graphql`
 
 const IndexPage = ({ data }) => {
   return (
-    <Layout title="Roll 1 - Ektar 100">
+    <Layout title="sandroid.dev/rolls/roll1-ektar-100">
+      <p>
+        <span>
+          Text stuff - Hi this is an
+          introduction to a bunch of
+          text stuff that is happening.
+        </span>
+      </p>
+      <p>
+        <span>
+          Text stuff TWO- Hi this is an
+          introduction to a bunch of
+          text stuff that is happening.
+        </span>
+      </p>
       <ImageGrid
         images={data.allFile.edges.map(
           ({ node }) =>

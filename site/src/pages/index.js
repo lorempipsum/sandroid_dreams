@@ -1,8 +1,9 @@
 import * as React from "react";
 import { Link } from 'gatsby';
 
-import Layout from '../components/Layout';
 
+import Layout from '../components/Layout';
+import ArticleLink from '../components/ArticleLink';
 // styles
 
 const centered = {
@@ -14,11 +15,11 @@ const centered = {
 // markup
 const IndexPage = () => {
   return (
-    <Layout title={"sandroid.dev"}>
+    <Layout>
       <div style={centered}>
-        <Link to="/rolls/1">
-          Roll 1
-        </Link>
+        <ArticleLink to="/rolls/1" text="Roll 1"></ArticleLink>
+        <ArticleLink to="/rolls/2" text="Roll 2"></ArticleLink>
+
       </div>
     </Layout>
   );

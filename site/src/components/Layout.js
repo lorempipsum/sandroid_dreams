@@ -3,12 +3,13 @@ import Title from './Title';
 
 const main = {
   fontFamily:
-    '-apple-system, Roboto, sans-serif, serif',
+    'consolas, monaco, courier, "courier new", fixed-width',
   display: 'grid',
   margin: 'auto',
-  marginTop: '20vh',
+  marginTop: '3vh',
   gridTemplateColumns:
-    'minmax(0, auto) fit-content(800px) minmax(0, auto)',
+    'minmax(0, auto) min(600px, 95vw) minmax(0, auto)',
+  paddingLeft: 'calc(100vw - 100%)',
 };
 
 const header = {
@@ -20,22 +21,21 @@ const header = {
 };
 
 const content = {
-  marginTop: '10vh',
+  marginTop: '3vh',
   gridColumn: '2',
   gridRow: '2',
   justifyContent: 'center',
-  minWidth: 'min(95vw, 700px)',
+  minWidth: 'min(95vw, 600px)',
 };
 
-const Layout = ({
-  children,
-  title,
-}) => {
+const Layout = ({ children }) => {
   return (
     <>
       <div style={main}>
         <div style={header}>
-          <Title title={title}></Title>
+          <Title
+            title={'sandroid.dev'}
+          ></Title>
         </div>
         <div style={content}>
           {children}
