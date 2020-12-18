@@ -17,8 +17,8 @@ const IndexPage = () => {
   return (
     <Layout>
       <div style={centered}>
-        <ArticleLink to="/rolls/1" text="Roll 1"></ArticleLink>
-        <ArticleLink to="/rolls/2" text="Roll 2"></ArticleLink>
+        <ArticleLink to="/rolls/1" text="Photography - The First Roll of 35mm"></ArticleLink>
+        <ArticleLink to="/rolls/2" text="Photography - Pentax MX Maiden Voyage"></ArticleLink>
 
       </div>
     </Layout>

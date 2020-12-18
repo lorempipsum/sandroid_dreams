@@ -10,13 +10,24 @@ const link = {
   marginTop: 0,
   textAlign: 'center',
   justifySelf: 'center',
+  marginTop: '20px',
+};
+
+const linkTextStyle = {
+  textDecoration: 'none',
+  color: '#333',
 };
 
 // markup
-const ArticleLink = ({to, text}) => {
+const ArticleLink = ({ to, text }) => {
   return (
     <div style={link}>
-      <Link to={to}>{text}</Link>
+      <Link
+        style={linkTextStyle}
+        to={to}
+      >
+        {text}
+      </Link>
     </div>
   );
 };

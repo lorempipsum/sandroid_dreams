@@ -1,35 +1,47 @@
 import * as React from 'react';
-import { Link, StaticQuery, graphql } from 'gatsby';
+import { Link } from 'gatsby';
 import logo from '../data/images/site/logo.jpg';
 import styles from './Title.module.css';
 
 // styles
-const headingStyles = {
-  marginTop: 0,
-  textAlign: 'center',
-  justifySelf: 'center',
-  fontSize: '2em',
-  marginTop: '3vh',
-  fontVariant: 'small-caps',
-  textDecoration: 'none',
-  color: '#333',
-};
 
 export const Title = ({ title }) => {
   return (
     <div>
       <title>{title}</title>
       <Link
-        style={headingStyles}
+        className={styles.headingStyles}
         to="/"
       >
         <div>
-          <img
+          <div
+            className={
+              styles.logoWithCss
+            }
+          >
+            <div className={styles.squareW}/>
+            <div className={styles.squareB}/>
+            <div className={styles.squareW}/>
+            <div className={styles.squareW}/>
+            <div className={styles.squareW}/>
+            <div className={styles.squareW}/>
+            <div className={styles.squareB}/>
+            <div className={styles.squareB}/>
+            <div className={styles.squareW}/>
+            <div className={styles.squareB}/>
+            <div className={styles.squareB}/>
+            <div className={styles.squareW}/>
+            <div className={styles.squareB}/>
+            <div className={styles.squareB}/>
+            <div className={styles.squareB}/>
+            <div className={styles.squareW}/>
+          </div>
+          {/* <img
             src={logo}
             width="120"
             height="120"
             alt="Logo"
-          />
+          /> */}
         </div>
         {title}
       </Link>

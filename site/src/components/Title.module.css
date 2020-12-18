@@ -1,3 +1,4 @@
+
 .subtitle {
     font-size: 15px;
     font-weight: 500;
@@ -6,4 +7,40 @@
     margin-bottom: 60px;
     margin-top: 20px;
     color: #888;
-  }
+}
+
+.logoWithCss {
+    display:grid;
+    grid-template-areas: "1 2 3 a"
+                          "4 5 6 b "
+                          "7 8 9 c"
+                          "10 11 12 d";
+    width: 80px;
+    margin: 0 auto;
+    height: 80px;
+    gap: 1px;
+}
+
+.squareB {
+  margin: 0;
+        width: 20px;
+        height: 20px;
+        background: black;
+    }
+.squareW {
+  margin: 0;
+        width: 20px;
+        height: 20px;
+        background: white;
+    }
+
+.headingStyles {
+  margin-top: 20px;
+  text-align: center;
+  justify-self: center;
+  font-size: 2em;
+  margin-top: 3vh;
+  font-variant: small-caps;
+  text-decoration: none;
+  color: #333;
+};
