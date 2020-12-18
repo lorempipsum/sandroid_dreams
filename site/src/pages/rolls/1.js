@@ -35,21 +35,12 @@ export const query = graphql`
   }
 `;
 
-const IndexPage = ({ data }) => {
+const InfinteRoll = ({ data }) => {
   return (
-    <Layout title="sandroid.dev/rolls/roll1-ektar-100">
+    <Layout title="The Infinite Photo Roll">
       <p>
         <span>
-          Text stuff - Hi this is an
-          introduction to a bunch of
-          text stuff that is happening.
-        </span>
-      </p>
-      <p>
-        <span>
-          Text stuff TWO- Hi this is an
-          introduction to a bunch of
-          text stuff that is happening.
+          This page will automatically be updated with all the images uploaded to this site.
         </span>
       </p>
       <ImageGrid
@@ -62,4 +53,4 @@ const IndexPage = ({ data }) => {
   );
 };
 
-export default IndexPage;
+export default InfinteRoll;

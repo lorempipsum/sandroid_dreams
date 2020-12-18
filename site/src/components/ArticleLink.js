@@ -4,26 +4,15 @@ import { Link } from 'gatsby';
 import Layout from '../components/Layout';
 
 // styles
+import styles from './ArticleLink.module.css';
 
-const link = {
-  textDecoration: 'none',
-  marginTop: 0,
-  textAlign: 'center',
-  justifySelf: 'center',
-  marginTop: '20px',
-};
-
-const linkTextStyle = {
-  textDecoration: 'none',
-  color: '#333',
-};
 
 // markup
 const ArticleLink = ({ to, text }) => {
   return (
-    <div style={link}>
+    <div className={styles.link}>
       <Link
-        style={linkTextStyle}
+        className={styles.linkTextStyle}
         to={to}
       >
         {text}
