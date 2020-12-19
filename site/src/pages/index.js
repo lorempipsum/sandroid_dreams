@@ -11,6 +11,7 @@ const centered = {
   marginTop: 0,
   textAlign: 'center',
   justifySelf: 'center',
+
 };
 // markup
 const IndexPage = () => {
@@ -18,13 +19,13 @@ const IndexPage = () => {
     <Layout>
       <div style={centered}>
         <ArticleLink
-          to="/rolls/1"
-          text="The Infinite Photo Roll"
-        ></ArticleLink>
-        <ArticleLink
           to="/rolls/2"
           text="Photography - Pentax MX Maiden Voyage"
-        ></ArticleLink>
+        />{' '}
+        <ArticleLink
+          to="/rolls/1"
+          text="The Infinite Photo Roll"
+        />
       </div>
     </Layout>
   );

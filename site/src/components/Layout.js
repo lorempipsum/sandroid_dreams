@@ -21,14 +21,20 @@ const header = {
 };
 
 const content = {
-  marginTop: '3vh',
   gridColumn: '2',
   gridRow: '2',
   justifyContent: 'center',
   minWidth: 'min(95vw, 600px)',
 };
 
-const Layout = ({ children }) => {
+const articleHeading = {
+  fontFamily:
+    'consolas, monaco, courier, "courier new", fixed-width',
+  fontSize: '1.5em',
+  textAlign: 'center',
+};
+
+const Layout = ({ children, title }) => {
   return (
     <>
       <div style={main}>
@@ -38,6 +44,7 @@ const Layout = ({ children }) => {
           ></Title>
         </div>
         <div style={content}>
+          {title && <p style={articleHeading}>{title}</p>}
           {children}
         </div>
       </div>

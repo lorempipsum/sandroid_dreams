@@ -19,22 +19,54 @@ export const Title = ({ title }) => {
               styles.logoWithCss
             }
           >
-            <div className={styles.squareW}/>
-            <div className={styles.squareB}/>
-            <div className={styles.squareW}/>
-            <div className={styles.squareW}/>
-            <div className={styles.squareW}/>
-            <div className={styles.squareW}/>
-            <div className={styles.squareB}/>
-            <div className={styles.squareB}/>
-            <div className={styles.squareW}/>
-            <div className={styles.squareB}/>
-            <div className={styles.squareB}/>
-            <div className={styles.squareW}/>
-            <div className={styles.squareB}/>
-            <div className={styles.squareB}/>
-            <div className={styles.squareB}/>
-            <div className={styles.squareW}/>
+            <div
+              className={styles.squareW}
+            />
+            <div
+              className={styles.squareB}
+            />
+            <div
+              className={styles.squareW}
+            />
+            <div
+              className={styles.squareW}
+            />
+            <div
+              className={styles.squareW}
+            />
+            <div
+              className={styles.squareW}
+            />
+            <div
+              className={styles.squareB}
+            />
+            <div
+              className={styles.squareB}
+            />
+            <div
+              className={styles.squareW}
+            />
+            <div
+              className={styles.squareB}
+            />
+            <div
+              className={styles.squareB}
+            />
+            <div
+              className={styles.squareW}
+            />
+            <div
+              className={styles.squareB}
+            />
+            <div
+              className={styles.squareB}
+            />
+            <div
+              className={styles.squareB}
+            />
+            <div
+              className={styles.squareW}
+            />
           </div>
           {/* <img
             src={logo}
@@ -45,10 +77,15 @@ export const Title = ({ title }) => {
         </div>
         {title}
       </Link>
-      <p className={styles.subtitle}>
-        Do sandroids dream of electric
-        sleep?
-      </p>
+      <Link
+        className={styles.subtitleParent}
+        to="/"
+      >
+        <p className={styles.subtitleText}>
+          Do sandroids dream of electric
+          sleep?
+        </p>
+      </Link>
     </div>
   );
 };
