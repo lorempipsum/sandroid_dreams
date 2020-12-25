@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2bd57de2-b0cd-461a-ac1e-e643a99c39f7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/src/components/ArticleLink.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/site/src/components/ArticleLink.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/src/components/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/src/components/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/src/components/Title.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/src/components/Title.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/src/components/Title.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/site/src/components/Title.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/src/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/src/pages/rolls/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/src/pages/rolls/1.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +25,20 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js.last.introduce.type" value="CONST" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="1.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/site/src/pages/rolls/1.js" working-dir="$PROJECT_DIR$/site/src/pages/rolls">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.1.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -35,11 +48,43 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608336822233</updated>
-      <workItem from="1608336823908" duration="72000" />
+      <workItem from="1608336823908" duration="211000" />
+      <workItem from="1608337066786" duration="514000" />
     </task>
+    <task id="LOCAL-00001" summary="commit from webstorm">
+      <created>1608336984776</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1608336984776</updated>
+    </task>
+    <task id="LOCAL-00002" summary="commit from webstorm">
+      <created>1608337009646</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1608337009646</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit from webstorm" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit from webstorm" />
   </component>
 </project>
