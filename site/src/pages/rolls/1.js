@@ -24,7 +24,7 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
             full: fluid(
-              maxWidth: 1024
+              maxWidth: 2544
             ) {
               ...GatsbyImageSharpFluid
             }
