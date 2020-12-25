@@ -2,7 +2,6 @@
 
 .link  {
   text-decoration: none;
-  margin-top: 0;
   text-align: center;
   justify-self: center;
   margin-top: 20px;
@@ -15,4 +14,4 @@
 
 .linkTextStyle:hover {
   border-bottom: 1px solid #333;
-};
+}

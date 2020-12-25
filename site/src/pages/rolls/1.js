@@ -35,7 +35,7 @@ export const query = graphql`
   }
 `;
 
-const InfinteRoll = ({ data }) => {
+const InfiniteRoll = ({ data }) => {
   return (
     <Layout title="The Infinite Photo Roll">
       <p>
@@ -53,4 +53,4 @@ const InfinteRoll = ({ data }) => {
   );
 };
 
-export default InfinteRoll;
+export default InfiniteRoll;
