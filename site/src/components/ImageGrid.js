@@ -28,6 +28,27 @@ const lightbox = {
   zIndex: 500,
 };
 
+const previousButton = {
+  left: 0,
+  top: 0,
+  marginTop: '50vh',
+  marginLeft: '5vw',
+  height: '20px',
+  width: '20px',
+  position: 'fixed',
+  zIndex: 5000,
+};
+
+const nextButton = {
+  left: 0,
+  top: 0,
+  marginTop: '50vh',
+  marginLeft: '94vw',
+  height: '20px',
+  width: '20px',
+  position: 'fixed',
+  zIndex: 5000,
+};
 
 const lightboxImage = {
   position: 'fixed',
@@ -39,6 +60,20 @@ const lightboxImage = {
   marginLeft: '5vw',
   marginTop: '5vh',
   objectFit: 'contain',
+};
+
+const lightboxImageOverlay = {
+  position: 'fixed',
+  top: '0',
+  left: '0',
+  height: '90vh',
+  width: '90vw',
+  zIndex: '1000',
+  marginLeft: '5vw',
+  marginTop: '5vh',
+  objectFit: 'contain',
+  zIndex: 5000,
+  opacity:0,
 };
 
 const ImageGrid = ({ images }) => {
@@ -91,16 +126,29 @@ const ImageGrid = ({ images }) => {
   return (
     <>
       {isOpen && (
-        <div
-          style={lightbox}
-          onClick={() =>
-            closeLightbox()
-          }
-        >
+        <div style={lightbox}>
+          <button
+            style={nextButton}
+            onClick={() =>
+              setImage(image + 1)
+            }
+          ></button>
+          <button
+            style={previousButton}
+            onClick={() =>
+              setImage(image - 1)
+            }
+          ></button>
+          <button
+            style={lightboxImageOverlay}
+            onClick={() =>
+              closeLightbox()
+            }
+          ></button>
           <Img
             fluid={fullArray[image]}
             imgStyle={lightboxImage}
-          />
+          ></Img>
         </div>
       )}
       <div style={imageGrid}>
