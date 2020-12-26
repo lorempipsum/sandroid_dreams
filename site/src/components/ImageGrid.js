@@ -32,11 +32,10 @@ const previousButton = {
   left: 0,
   top: 0,
   marginTop: '50vh',
-  marginLeft: '5vw',
-  height: '20px',
-  width: '20px',
+  marginLeft: '2vw',
   position: 'fixed',
-  zIndex: 5000,
+  zIndex: 6000,
+  background: 'yellow'
 };
 
 const nextButton = {
@@ -45,9 +44,8 @@ const nextButton = {
   marginTop: '50vh',
   marginLeft: '94vw',
   height: '20px',
-  width: '20px',
   position: 'fixed',
-  zIndex: 5000,
+  zIndex: 6000,
 };
 
 const lightboxImage = {
@@ -60,20 +58,6 @@ const lightboxImage = {
   marginLeft: '5vw',
   marginTop: '5vh',
   objectFit: 'contain',
-};
-
-const lightboxImageOverlay = {
-  position: 'fixed',
-  top: '0',
-  left: '0',
-  height: '90vh',
-  width: '90vw',
-  zIndex: '1000',
-  marginLeft: '5vw',
-  marginTop: '5vh',
-  objectFit: 'contain',
-  zIndex: 5000,
-  opacity:0,
 };
 
 const ImageGrid = ({ images }) => {
@@ -126,30 +110,42 @@ const ImageGrid = ({ images }) => {
   return (
     <>
       {isOpen && (
-        <div style={lightbox}>
+        <>
           <button
             style={nextButton}
             onClick={() =>
               setImage(image + 1)
             }
-          ></button>
-          <button
+          >
+            <div>Next</div>
+          </button>
+          <a
             style={previousButton}
             onClick={() =>
               setImage(image - 1)
             }
-          ></button>
-          <button
-            style={lightboxImageOverlay}
+          >
+            <button>Previous</button>
+          </a>
+          <div
             onClick={() =>
               closeLightbox()
             }
-          ></button>
-          <Img
-            fluid={fullArray[image]}
-            imgStyle={lightboxImage}
-          ></Img>
-        </div>
+            style={lightbox}
+          >
+            <div
+              style={{
+                color: 'blue',
+                zIndex: 6001,
+                width: '200%',
+              }}
+            ></div>
+            <Img
+              fluid={fullArray[image]}
+              imgStyle={lightboxImage}
+            ></Img>
+          </div>
+        </>
       )}
       <div style={imageGrid}>
         {thumbsArray.map(
