@@ -11,5 +11,5 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-material-ui`,
   ],
-  pathPrefix: '/sandroid-dreams',
+  pathPrefix: '/sandroid_dreams',
 };
