@@ -50,6 +50,4 @@
   max-width: 80vw;
   width: auto;
   z-index: 1000;
-  object-fit: contain;
-  border: solid 10px white;
 }

@@ -104,6 +104,7 @@ const ImageGrid = ({ images }) => {
               className={
                 styles.lightboxImage
               }
+              imgStyle={{objectFit: 'contain'}}
               fadeIn={true}
               placeholderStyle={{
                 opacity: 0,
