@@ -4,9 +4,7 @@ date: "2020-12-24"
 title: "Intoxicated Shrubbery"
 ---
 
-# Intoxicated Shrubbery
-
-![Plotting result](drunk_trees.jpg)
+![Plotting result](./drunk_trees.jpg)
 ![Plotting result closeup](drunk_trees_closeup.jpg)
 
 This plotting was inspired by some shrubbery I saw on The Downs in Bristol. All of the thick shrubs seemed to grow in a nice parabolic arc, with the tallest branches growing from the center, and the height decreasing smoothly the further you went from the middle. The perfect simple rules to have a computer follow. The basic algorithm is as follows:

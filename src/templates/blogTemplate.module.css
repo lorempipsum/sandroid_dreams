@@ -1,0 +1,14 @@
+.divider {
+background: linear-gradient(to right, rgba(255,255,255,0), #ccc, rgba(255,255,255,0));
+height: 1px;
+margin: 2em;
+border-style: dashed;
+/* TODO use a variable for this. Should be the same as the BG colour so it melts into it*/
+border-color: white;
+}
+
+.date {
+    text-align: center;
+  color:#524F4F;
+  font-weight: 500;
+}
