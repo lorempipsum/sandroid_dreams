@@ -11,7 +11,8 @@ const main = {
     'minmax(0, auto) min(600px, 95vw) minmax(0, auto)',
 
   // This makes the page content not jump when the scroll bar appears on the right as long content is loaded.
-  paddingLeft: 'calc(100vw - 100%)',
+  // Breaks on mobile with everything shifted to the right, so now just displaying the scrollbar for all pages regardless of height
+  //   paddingLeft: 'calc(100vw - 100%)',
 };
 
 const header = {
