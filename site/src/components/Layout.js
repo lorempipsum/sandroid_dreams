@@ -12,7 +12,6 @@ const main = {
 
   // This makes the page content not jump when the scroll bar appears on the right as long content is loaded.
   paddingLeft: 'calc(100vw - 100%)',
-  background: '#EEEEEE ',
 };
 
 const header = {

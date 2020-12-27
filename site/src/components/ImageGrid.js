@@ -5,72 +5,10 @@ import React, {
 
 import Img from 'gatsby-image';
 import { Image } from './Image';
-
-const main = {
-  display: 'grid',
-};
-
-const imageGrid = {
-  display: 'grid',
-  gridTemplateColumns:
-    '1fr 1fr 1fr 1fr 1fr',
-  gridTemplateRows: 'auto',
-};
-
-const lightbox = {
-  background: 'rgba(0, 0, 0, 0.5)',
-  left: 0,
-  top: 0,
-  width: '100%',
-  height: '100%',
-  position: 'fixed',
-  zIndex: 500,
-};
-
-const previousButton = {
-  left: 0,
-  top: 0,
-  marginLeft: '2vw',
-  position: 'fixed',
-  zIndex: 6000,
-  height: '100vh',
-  border: 'none',
-  background: 'none',
-  //TODO: does removing outline hamper accessibility?
-  outline: 'none',
-  cursor: 'pointer',
-};
-
-const nextButton = {
-  left: 0,
-  top: 0,
-  // If Margin + Padding add up to 94vw, then the button is 6vw away from the right edge of the screen.
-  marginLeft: '74vw',
-  paddingLeft: '20vw',
-  position: 'fixed',
-  zIndex: 6000,
-  height: '100vh',
-  border: 'none',
-  background: 'none',
-  outline: 'none',
-  cursor: 'pointer',
-};
-
-const lightboxImage = {
-  position: 'fixed',
-  top: '0',
-  left: '0',
-  height: '90vh',
-  width: '90vw',
-  zIndex: '1000',
-  marginLeft: '5vw',
-  paddingRight: '20vw',
-  marginTop: '5vh',
-  objectFit: 'contain',
-};
+import styles from './ImageGrid.module.css';
 
 const ImageGrid = ({ images }) => {
-  // wtf is images?
+  // wtf is {images}?
   // Something like that I guess:
   // childImageSharp {
   //   thumb: fluid(
@@ -121,61 +59,62 @@ const ImageGrid = ({ images }) => {
       {isOpen && (
         <>
           <button
-            style={nextButton}
+            className={
+              styles.nextButton
+            }
             onClick={() =>
               setImage(image + 1)
             }
           >
-            <div>
-              {' '}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="50"
-                height="50"
-                viewBox="0 0 25 25"
-              >
-                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-              </svg>
-            </div>
+            {' '}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="50"
+              height="50"
+              viewBox="0 0 25 25"
+            >
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+            </svg>
           </button>
           <button
-            style={previousButton}
+            className={
+              styles.previousButton
+            }
             onClick={() =>
               setImage(image - 1)
             }
           >
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="50"
-                height="50"
-                viewBox="0 0 25 25"
-              >
-                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-              </svg>
-            </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="50"
+              height="50"
+              viewBox="0 0 25 25"
+            >
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+            </svg>
           </button>
           <div
             onClick={() =>
               closeLightbox()
             }
-            style={lightbox}
+            className={styles.lightbox}
           >
-            <div
-              style={{
-                color: 'blue',
-                zIndex: 6001,
-                width: '200%',
-              }}
-            ></div>
             <Img
               fluid={fullArray[image]}
-              imgStyle={lightboxImage}
+              className={
+                styles.lightboxImage
+              }
+              fadeIn={true}
+              placeholderStyle={{
+                opacity: 0,
+                border: 'none',
+                display: 'none',
+              }}
             ></Img>
           </div>
         </>
       )}
-      <div style={imageGrid}>
+      <div className={styles.imageGrid}>
         {thumbsArray.map(
           (thumbnail, index) => {
             return (
@@ -183,6 +122,9 @@ const ImageGrid = ({ images }) => {
                 onClick={() =>
                   openLightbox(index)
                 }
+                style={{
+                  cursor: 'pointer',
+                }}
               >
                 <Img
                   fluid={thumbnail}
