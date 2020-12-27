@@ -1,0 +1,422 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/sandroid_dreams/styles.d94b753863b7c56b52cb.css" id="gatsby-global-css">const text{font-family:consolas,monaco,courier,courier new,fixed-width}.Title-module--subtitleText--3jFUU{font-size:15px;font-weight:500;max-width:200px;margin:10px auto 60px;color:#888}.Title-module--subtitleParent--1B9e6{text-decoration:none}.Title-module--logoWithCss--3wEIC{display:grid;grid-template-areas:"1 2 3 a" "4 5 6 b " "7 8 9 c" "10 11 12 d";width:60px;margin:0 auto;height:60px;border:1px solid}.Title-module--squareB--1Ox5x{margin:0;width:15px;height:15px;background:#000}.Title-module--squareW--3laYP{margin:0;width:15px;height:15px;background:#fff}.Title-module--headingStyles--1RN0_{font-size:2em;font-variant:small-caps;color:#333}.ArticleLink-module--link--Q2esx,.Title-module--headingStyles--1RN0_{margin-top:20px;text-align:center;justify-self:center;text-decoration:none}.ArticleLink-module--linkTextStyle--2kQAU{text-decoration:none;color:#333}.ArticleLink-module--linkTextStyle--2kQAU:hover{border-bottom:1px solid #333}.ImageGrid-module--imageGrid--1nXoK{display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;grid-template-rows:auto;grid-gap:5px}.ImageGrid-module--lightbox--mXXyd{background:rgba(0,0,0,.5);left:0;top:0;width:100%;height:100%;position:fixed;z-index:500}.ImageGrid-module--previousButton--39FJ0{left:0;margin-left:2vw}.ImageGrid-module--nextButton--2ftlX,.ImageGrid-module--previousButton--39FJ0{top:50%;transform:translateY(-50%);position:fixed;z-index:6000;border:none;background:none;cursor:pointer}.ImageGrid-module--nextButton--2ftlX{right:0;margin-right:2vw}.ImageGrid-module--lightboxImage--290Va{position:fixed;top:50%;left:50%;transform:translate3D(-50%,-50%,0);max-height:90vh;height:auto;max-width:100vw;width:auto;z-index:1000}</style><meta name="generator" content="Gatsby 2.28.2"/><style id="jss-server-side"></style><link as="script" rel="preload" href="/sandroid_dreams/styles-407fe62976dc5310c43e.js"/><link as="script" rel="preload" href="/sandroid_dreams/component---src-templates-blog-template-js-54eb1973eb7fd22633b5.js"/><link as="script" rel="preload" href="/sandroid_dreams/framework-d585a04b7d285a7760d6.js"/><link as="script" rel="preload" href="/sandroid_dreams/app-894fa02686f20b47855e.js"/><link as="script" rel="preload" href="/sandroid_dreams/webpack-runtime-455b046a04837dc845d6.js"/><link as="fetch" rel="preload" href="/sandroid_dreams/page-data/blog/intoxicated-shrubbery/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/sandroid_dreams/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="blog-post-container"><div class="blog-post"><h1>Intoxicated Shrubbery</h1><h2>December 24, 2020</h2><div class="blog-post-content"><h1>Intoxicated Shrubbery</h1>
+<p><img src="drunk_trees.jpg" alt="Plotting result">
+<img src="drunk_trees_closeup.jpg" alt="Plotting result closeup"></p>
+<p>This plotting was inspired by some shrubbery I saw on The Downs in Bristol. All of the thick shrubs seemed to grow in a nice parabolic arc, with the tallest branches growing from the center, and the height decreasing smoothly the further you went from the middle. The perfect simple rules to have a computer follow. The basic algorithm is as follows:</p>
+<ol>
+<li>Choose a point on the bottom edge of the page to start a branch.</li>
+</ol>
+<pre><code class="language-Java">int delta = int(random(-3000,2000));
+i=0;
+x= xMax;
+y = int(HORIZONTAL_CENTER + delta);
+</code></pre>
+<ol start="2">
+<li>
+<p>Depending on the distance of the point from the horizontal center, choose a random <em>mass</em> for the branch. The further from the middle, the smaller the <em>mass</em>.</p>
+<pre><code class="language-Java">mass = int(random(8, 180 - abs(delta)/12)); // Quick solution with trial and error. You could do better by using a formula for a curve.
+</code></pre>
+</li>
+<li>
+<p>Choose a new point, a random distance away from the last point. The point has a bias towards negative x (up on the sheet), so the branches grow upwards.</p>
+<pre><code class="language-Java">  x = int(x + spacing*random(-2, 1));
+  y = int(y + spacing*random(-1, 1));
+</code></pre>
+</li>
+<li>
+<p>Draw a line between the original point and the new point, and increase mass used by 1.</p>
+<pre><code class="language-Java">  i=0;
+</code></pre>
+</li>
+<li>
+<p>Repeat steps 3 and 4 until either all the <em>mass</em> has been used up, or the branch goes out of bounds of the drawing area.</p>
+<pre><code class="language-Java">  if ( x > xMin &#x26;&#x26; x &#x3C; xMax &#x26;&#x26; y > yMin &#x26;&#x26; y &#x3C; yMax &#x26;&#x26; i &#x3C; mass &#x26;&#x26; iterations &#x3C; MAX_ITERATIONS) {
+      line_clipped(x0, y0, x, y, up); // draws lines only if they're in the reduced drawing area
+      i=i+1; // increase mass used
+      up = false;
+  }
+</code></pre>
+</li>
+</ol>
+<pre><code class="language-Java">void draw() {
+  int spacing = 100;
+  int x0, y0;
+  int MAX_ITERATIONS = 300;
+
+  x0 = x;
+  y0 = y;
+
+  x = int(x + spacing*random(-2, 1));
+  y = int(y + spacing*random(-1, 1));
+
+  if ( x > xMin &#x26;&#x26; x &#x3C; xMax &#x26;&#x26; y > yMin &#x26;&#x26; y &#x3C; yMax &#x26;&#x26; i &#x3C; mass &#x26;&#x26; iterations &#x3C; MAX_ITERATIONS) {
+      line_clipped(x0, y0, x, y, up); // draws lines only if they're in the reduced drawing area
+      i=i+1;
+      up = false;
+
+  } else {
+    int delta = int(random(-3000,2000));
+    i=0;
+    x= xMax;
+    y = int(HORIZONTAL_CENTER + delta);
+    mass = int(random(8, 180 - abs(delta)/12)); // Hacky way of getting shorter branches when they start nearer to the edge
+    iterations = iterations + 1;
+    up = true; // lift the pen if a branch is finished
+
+    int pen = round(random(1, 2));
+    if (pen != currentPen) {
+      plotter.write("SP"+ pen + ";", 3000); //Select pen
+      plotter.write("PU"+x+","+y+";", 4000); //Position pen
+      println("pen: " + pen);
+    }
+    currentPen = pen;
+
+  }
+
+  if (iterations == MAX_ITERATIONS) {
+      plotter.write("PU"+0+","+0+";"); //Position pen at origin when done plotting
+
+  }
+
+}
+</code></pre>
+<p>And that's it!</p>
+<p>Complete Processing code with all of the surrounding stuff:</p>
+<pre><code class="language-Java">  import processing.serial.*;
+
+  Serial myPort;    // Create object from Serial class
+  Plotter plotter;  // Create a plotter object
+  int val;          // Data received from the serial port
+  int lf = 10;      // ASCII linefeed
+
+  //Enable plotting?
+  boolean PLOTTING_ENABLED = true;
+  boolean draw_box = false;
+  boolean draw_label = true;
+  boolean up = true;
+
+  boolean just_draw = false;
+
+
+  //Label
+  String dateTime = day() + "/" + month() + "/" + year() + " " + hour() + ":" + minute() + ":" + second() + " - ";
+  String label = dateTime + "INTOXICATED SHRUBBERY IV";
+
+  //Plotter dimensions
+  int xMin = 600;
+  int yMin = 800;
+  int xMax = 10300 - 300;
+  int yMax = 8400 - 600;
+  int A4_MAX_WIDTH = 10887;
+  int A4_MAX_HEIGHT = 8467;
+  int VERTICAL_CENTER = (xMax + xMin) /2;
+  int HORIZONTAL_CENTER = (yMax + yMin) /2;
+
+
+  int i = 0;
+  int iterations = 0;
+  int lastY = yMin;
+  int currentPen = 1;
+
+  int x = -9999999;
+  int y = -9999999;
+  int mass = 50;
+
+  //Let's set this up
+  void setup() {
+    print(dateTime);
+    background(233, 233, 220);
+    size(840, 1080);
+    smooth();
+
+    if (just_draw) {
+      draw_box = false;
+      draw_label = false;
+      PLOTTING_ENABLED = true;
+    }
+
+    //Select a serial port
+    println(Serial.list()); //Print all serial ports to the console
+    String portName = Serial.list()[1]; //make sure you pick the right one
+    println("Plotting to port: " + portName);
+
+    //Open the port
+    myPort = new Serial(this, portName, 9600);
+    myPort.bufferUntil(lf);
+
+    //Associate with a plotter object
+    plotter = new Plotter(myPort);
+
+    //Initialize plotter
+    plotter.write("IN;SP2;");
+    //Draw a label first (this is pretty cool to watch)
+
+    if (draw_label) {
+    int labelX = xMax + 300;
+    int labelY = yMin;
+
+    if (PLOTTING_ENABLED) {
+      plotter.write("PU"+labelX+","+labelY+";"); //Position pen
+      plotter.write("SI0.14,0.14;DI0,1;LB" + label + char(3)); //Draw label
+      println("drawing label");
+      delay(label.length() * 500);
+      println("label done");
+    }
+
+    fill(50);
+    float textX = map(labelX, 0, A4_MAX_HEIGHT, 0, width);
+    float textY = map(labelY, 0, A4_MAX_WIDTH, 0, height);
+
+    text(dateTime + label, textY, textX);
+    }
+
+    if (draw_box) {
+
+      //box
+      drawLine(xMin, yMin, xMax, yMin, true);
+      drawLine(xMax, yMin, xMax, yMax, true);
+      drawLine(xMax, yMax, xMin, yMax, true);
+      drawLine(xMin, yMax, xMin, yMin, true);
+
+      // diagonals
+      drawLine(xMin, yMin, xMax, yMax, true);
+      drawLine(xMin, yMax, xMax, yMin, true);
+
+      //vertical line down from middle
+      line_clipped(xMin, (yMax + yMin) /2, xMax, (yMax + yMin) /2, true);
+
+      //horizontal line
+      line_clipped((xMax + xMin) /2, yMin, (xMax + xMin) /2, yMax, true);
+    }
+
+  }
+
+  void draw() {
+    int spacing = 100;
+    int x0, y0;
+    int MAX_ITERATIONS = 150;
+
+    //horizontal line
+    x0 = x;
+    y0 = y;
+
+    x = int(x + spacing*random(-2, 1));
+    y = int(y + spacing*random(-1, 1));
+
+    if ( x > xMin &#x26;&#x26; x &#x3C; xMax &#x26;&#x26; y > yMin &#x26;&#x26; y &#x3C; yMax &#x26;&#x26; i &#x3C; mass &#x26;&#x26; iterations &#x3C; MAX_ITERATIONS) {
+        line_clipped(x0, y0, x, y, up);
+        i=i+1;
+        up = false;
+
+    } else {
+
+      int delta = int(random(-3000,2000));
+      println("delta=" + delta);
+      x = int(VERTICAL_CENTER + random(-5, 5));
+      y = int(HORIZONTAL_CENTER + delta);
+      x= xMax;
+      i=0;
+      mass = int(random(8, 180 - abs(delta)/12));
+      println(iterations);
+      iterations = iterations + 1;
+      up = true;
+
+      int pen = round(random(1, 2));
+      currentPen = pen;
+      if (pen != currentPen) {
+        plotter.write("SP"+ pen + ";", 3000); //Select pen
+        plotter.write("PU"+x+","+y+";", 4000); //Position pen
+        println("pen: " + pen);
+      }
+
+
+    }
+
+    if (iterations == MAX_ITERATIONS) {
+        plotter.write("PU"+0+","+0+";"); //Position pen
+    }
+
+  }
+  /*
+  * Encode a given point (x, y) into the different regions of
+  * a clip window as specified by its top-left corner (cx, cy)
+  * and it's width and height (cw, ch).
+  */
+  int encode_endpoint(
+    float x, float y,
+    float clipx, float clipy, float clipw, float cliph)
+  {
+    int code = 0; /* Initialized to being inside clip window */
+
+    /* Calculate the min and max coordinates of clip window */
+    float xmin = clipx;
+    float xmax = clipx + cliph;
+    float ymin = clipy;
+    float ymax = clipy + clipw;
+
+    if (x &#x3C; xmin)       /* to left of clip window */
+      code |= (1 &#x3C;&#x3C; 0);
+    else if (x > xmax)  /* to right of clip window */
+      code |= (1 &#x3C;&#x3C; 1);
+
+    if (y &#x3C; ymin)       /* below clip window */
+      code |= (1 &#x3C;&#x3C; 2);
+    else if (y > ymax)  /* above clip window */
+      code |= (1 &#x3C;&#x3C; 3);
+
+    return code;
+  }
+
+  boolean line_clipped(
+    float x0, float y0, float x1, float y1, boolean up) {
+
+    float clipx = xMin;
+    float clipy = yMin;
+    float clipw = yMax-yMin;
+    float cliph = xMax-xMin;
+
+
+
+    /* Stores encodings for the two endpoints of our line */
+    int e0code, e1code;
+
+    /* Whether the line should be drawn or not */
+    boolean accept = false;
+    int tries = 0;
+
+    do {
+      /* Get encodings for the two endpoints of our line */
+      e0code = encode_endpoint(x0, y0, clipx, clipy, clipw, cliph);
+      e1code = encode_endpoint(x1, y1, clipx, clipy, clipw, cliph);
+      tries = tries + 1;
+      if (tries > 3) {
+        println("tried too many times;");
+        break;
+      }
+
+      if (e0code == 0 &#x26;&#x26; e1code == 0) {
+        /* If line inside window, accept and break out of loop */
+        accept = true;
+        break;
+      } else if ((e0code &#x26; e1code) != 0) {
+        /*
+        * If the bitwise AND is not 0, it means both points share
+        * an outside zone. Leave accept as 'false' and exit loop.
+        */
+        break;
+      } else {
+        /* Pick an endpoint that is outside the clip window */
+        int code = e0code != 0 ? e0code : e1code;
+
+        float newx = 0, newy = 0;
+
+        /*
+        * Now figure out the new endpoint that needs to replace
+        * the current one. Each of the four cases are handled
+        * separately.
+        */
+        if ((code &#x26; (1 &#x3C;&#x3C; 0)) != 0) {
+          /* Endpoint is to the left of clip window */
+          //println("/* Endpoint is above the clip window */");
+
+          newx = xMin;
+          newy = ((y1 - y0) / (x1 - x0)) * (newx - x0) + y0;
+        } else if ((code &#x26; (1 &#x3C;&#x3C; 1)) != 0) {
+          /* Endpoint is to the right of clip window */
+          //println("/* Endpoint is below the clip window */");
+
+          newx = xMax;
+          newy = ((y1 - y0) / (x1 - x0)) * (newx - x0) + y0;
+        } else if ((code &#x26; (1 &#x3C;&#x3C; 3)) != 0) {
+          /* Endpoint is above the clip window */
+          //println("/* Endpoint is to the right of the clip window */");
+          newy = yMax;
+          newx = ((x1 - x0) / (y1 - y0)) * (newy - y0) + x0;
+        } else if ((code &#x26; (1 &#x3C;&#x3C; 2)) != 0) {
+          /* Endpoint is below the clip window */
+          //println(" /* Endpoint is to the left of the clip window */");
+          newy = yMin;
+          newx = ((x1 - x0) / (y1 - y0)) * (newy - y0) + x0;
+        }
+
+        /* Now we replace the old endpoint depending on which we chose */
+        if (code == e0code) {
+          x0 = newx;
+          y0 = newy;
+        } else {
+          x1 = newx;
+          y1 = newy;
+        }
+        tries = tries +1;
+      }
+    } while (true);
+
+
+    if (accept) {
+      drawLine(x0, y0, x1, y1, up);
+    }
+
+    return accept;
+  }
+
+  void drawLine(float x1, float y1, float x2, float y2, boolean up) {
+    float _x1 = map(x1, 0, A4_MAX_HEIGHT, 0, width);
+    float _y1 = map(y1, 0, A4_MAX_WIDTH, 0, height);
+
+    float _x2 = map(x2, 0, A4_MAX_HEIGHT, 0, width);
+    float _y2 = map(y2, 0, A4_MAX_WIDTH, 0, height);
+    line(_y1, _x1, _y2, _x2);
+
+    String pen = "PD";
+    if (up) {
+      pen="PU";
+    }
+
+
+    plotter.write(pen+x1+","+y1+";");
+    plotter.write("PD"+x2+","+y2+";"); //75 ms delay
+
+    if (PLOTTING_ENABLED) {
+      delay(200);
+    }
+  }
+
+  void drawPoint(int x, int y) {
+    float _x = map(x, 0, A4_MAX_HEIGHT, 0, width);
+    float _y = map(y, 0, A4_MAX_WIDTH, 0, height);
+
+    plotter.write("PU"+x+","+y+";"); //Position pen
+    plotter.write("PD"+x+","+y+";"); //Position pen
+
+    point(_y, _x);
+    if (PLOTTING_ENABLED) {
+      delay(250);
+    }
+  }
+
+
+
+  /*************************
+  Simple plotter class
+  *************************/
+
+  class Plotter {
+    Serial port;
+
+    Plotter(Serial _port) {
+      port = _port;
+    }
+
+    void write(String hpgl) {
+      if (PLOTTING_ENABLED) {
+        port.write(hpgl);
+      }
+    }
+
+    void write(String hpgl, int del) {
+      if (PLOTTING_ENABLED) {
+        port.write(hpgl);
+        delay(del);
+      }
+    }
+  }
+</code></pre></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/blog/intoxicated-shrubbery";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-092c4c6a41bb38cca3d9.js"],"app":["/app-894fa02686f20b47855e.js"],"component---src-pages-index-js":["/component---src-pages-index-js-0b0d82f76c89a97d8bf9.js"],"component---src-pages-rolls-1-js":["/component---src-pages-rolls-1-js-efc08e9f5ac27d8cd249.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-54eb1973eb7fd22633b5.js"]};/*]]>*/</script><script src="/sandroid_dreams/polyfill-092c4c6a41bb38cca3d9.js" nomodule=""></script><script src="/sandroid_dreams/webpack-runtime-455b046a04837dc845d6.js" async=""></script><script src="/sandroid_dreams/app-894fa02686f20b47855e.js" async=""></script><script src="/sandroid_dreams/framework-d585a04b7d285a7760d6.js" async=""></script><script src="/sandroid_dreams/component---src-templates-blog-template-js-54eb1973eb7fd22633b5.js" async=""></script><script src="/sandroid_dreams/styles-407fe62976dc5310c43e.js" async=""></script></body></html>
