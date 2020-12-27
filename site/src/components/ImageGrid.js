@@ -4,7 +4,6 @@ import React, {
 } from 'react';
 
 import Img from 'gatsby-image';
-
 import { Image } from './Image';
 
 const main = {
@@ -31,21 +30,30 @@ const lightbox = {
 const previousButton = {
   left: 0,
   top: 0,
-  marginTop: '50vh',
   marginLeft: '2vw',
   position: 'fixed',
   zIndex: 6000,
-  background: 'yellow'
+  height: '100vh',
+  border: 'none',
+  background: 'none',
+  //TODO: does removing outline hamper accessibility?
+  outline: 'none',
+  cursor: 'pointer',
 };
 
 const nextButton = {
   left: 0,
   top: 0,
-  marginTop: '50vh',
-  marginLeft: '94vw',
-  height: '20px',
+  // If Margin + Padding add up to 94vw, then the button is 6vw away from the right edge of the screen.
+  marginLeft: '74vw',
+  paddingLeft: '20vw',
   position: 'fixed',
   zIndex: 6000,
+  height: '100vh',
+  border: 'none',
+  background: 'none',
+  outline: 'none',
+  cursor: 'pointer',
 };
 
 const lightboxImage = {
@@ -56,6 +64,7 @@ const lightboxImage = {
   width: '90vw',
   zIndex: '1000',
   marginLeft: '5vw',
+  paddingRight: '20vw',
   marginTop: '5vh',
   objectFit: 'contain',
 };
@@ -117,16 +126,35 @@ const ImageGrid = ({ images }) => {
               setImage(image + 1)
             }
           >
-            <div>Next</div>
+            <div>
+              {' '}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                viewBox="0 0 25 25"
+              >
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+              </svg>
+            </div>
           </button>
-          <a
+          <button
             style={previousButton}
             onClick={() =>
               setImage(image - 1)
             }
           >
-            <button>Previous</button>
-          </a>
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                viewBox="0 0 25 25"
+              >
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+              </svg>
+            </div>
+          </button>
           <div
             onClick={() =>
               closeLightbox()

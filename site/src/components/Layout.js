@@ -2,14 +2,17 @@ import React from 'react';
 import Title from './Title';
 
 const main = {
-    fontFamily:
-        'consolas, monaco, courier, "courier new", fixed-width',
-    display: 'grid',
-    margin: 'auto',
-    marginTop: '3vh',
-    gridTemplateColumns:
-        'minmax(0, auto) min(600px, 95vw) minmax(0, auto)',
-    paddingLeft: 'calc(100vw - 100%)',
+  fontFamily:
+    'consolas, monaco, courier, "courier new", fixed-width',
+  display: 'grid',
+  margin: 'auto',
+  marginTop: '3vh',
+  gridTemplateColumns:
+    'minmax(0, auto) min(600px, 95vw) minmax(0, auto)',
+
+  // This makes the page content not jump when the scroll bar appears on the right as long content is loaded.
+  paddingLeft: 'calc(100vw - 100%)',
+  background: '#EEEEEE ',
 };
 
 const header = {
