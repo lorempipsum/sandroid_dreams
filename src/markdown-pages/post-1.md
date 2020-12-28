@@ -4,8 +4,7 @@ date: "2020-12-24"
 title: "Intoxicated Shrubbery"
 ---
 
-![Plotting result](./drunk_trees.jpg)
-![Plotting result closeup](drunk_trees_closeup.jpg)
+![Plotting result](../data/images/plotting/drunk_trees.jpg)
 
 This plotting was inspired by some shrubbery I saw on The Downs in Bristol. All of the thick shrubs seemed to grow in a nice parabolic arc, with the tallest branches growing from the center, and the height decreasing smoothly the further you went from the middle. The perfect simple rules to have a computer follow. The basic algorithm is as follows:
 
@@ -46,6 +45,8 @@ y = int(HORIZONTAL_CENTER + delta);
           up = false;
       }
     ```
+
+![Plotting result closeup](../data/images/plotting/drunk_trees_closeup.jpg)
 
 ```Java
 void draw() {

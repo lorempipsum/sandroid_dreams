@@ -1,26 +1,26 @@
 ---
 slug: "/blog/pointillism"
 date: "2020-12-24"
-title: "Intoxicated Shrubbery"
+title: "Pointillism Extended"
 ---
 
 
 # Pointillstic lines
 
-![Plotting result](panda.jpg)
+![Plotting result](../data/images/plotting/panda.jpg)
 
 This is a follow up from my pointillism exploration with plotterbjork. I wasn't too happy with the pointillism, since drawing mere points didn't really differ from just using a poor inkjet printer. So this uses a very similar idea, but instead of points it draws lines! And the results look **great**.
 
 It's evident from afar and even more so close up that this is something a little different than just a printer. The lines have a varying thickness due to how the ink flows, and each start and end point has a bit of a point on it. The lines are biased towards drawing upwards vertically, which gives the Panda a nice hairy look!
 
-![Close up of the result](panda_closeup.jpg)
+![Close up of the result](../data/images/plotting/panda_closeup.jpg)
 
 
 
 After the panda came out looking fabulous I went ahead and plotted some other
 black and white animals:
 
-![Orca](orca.jpg)
+![Orca](../data/images/plotting/orca.jpg)
 Code modified to bias the lines from left to right, to sell the illusion of movement, and give the orca a *slick* look.
 
 Full code below without the setup() and helper functions for drawing lines etc.

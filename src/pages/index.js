@@ -26,6 +26,22 @@ const IndexPage = () => {
           to="/rolls/1"
           text="The Infinite Photo Roll"
         />
+        <ArticleLink
+          to="/blog/intoxicated-shrubbery"
+          text="Plotting - Intoxicated Shrubbery"
+        />
+        <ArticleLink
+          to="/blog/plotterbjork"
+          text="Plotting - Plotterbjork"
+        />
+        <ArticleLink
+          to="/blog/pointillism"
+          text="Plotting - Pointillism Extended"
+        />
+        <ArticleLink
+          to="/blog/software-i-like"
+          text="Software I like"
+        />
       </div>
     </Layout>
   );

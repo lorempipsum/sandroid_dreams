@@ -1,21 +1,18 @@
 ---
-slug: "/blog/plotterBjork"
+slug: "/blog/plotterbjork"
 date: "2020-12-24"
-title: "Intoxicated Shrubbery"
+title: "Plotterbjork"
 ---
 
+![Plotting result](../data/images/plotting/plotterbjork.jpg)
 
-# PlotterBjork
+![Input file](../data/images/plotting/bjork.jpg)
 
-![Plotting result](plotterbjork.jpg)
+One of the more basic things you can do with a plotter is pointillism. That's the technique of creating an image out of tiny dots - the same mechanism screens use to display images, the dots being different coloured pixels. By varying the distance between the dots according to the brigthness of the underlying image, you can get a low resolution interpretation of it.
 
-![Input file](bjork.jpg)
+It sounds like a fun thing to try, but in the end I was left a little disappointed by my results. The main problem I had with is that the output just looks like the output from a poor inkjet printer, and doesn't have much of the characteristics of using a plotter in it. Sure, if you look closely you can see the variations in the dots (caused by the pen being at an angle or due to variations in the ink flow), but each dot is small and specific enough that it's a little boring.
 
-One of the more basic things you can do with a plotter is pointillism. That's the technique of creating an image out of tiny dots. By varying the distance between the dots according to the brigthness of the underlying image, you can get a low resolution interpretation of it.
-
-It sounds like a fun thing to try, but in the end I was left a little disappointed by my results. The main problem I had with is that the output just looks like the output from a poor inkjet printer, and doesn't have much of the characteristics of using a plotter in it. Sure, if you look closely you can see the variations in the dots, but each dot is small and specific enough that it's a little boring.
-
-![Close up of the result](plotterbjork_closeup.jpg)
+![Close up of the result](../data/images/plotting/plotterbjork_closeup.jpg)
 
 Here's my basic workflow for this:
 
