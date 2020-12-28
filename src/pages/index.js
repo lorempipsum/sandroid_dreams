@@ -42,6 +42,10 @@ const IndexPage = () => {
           to="/blog/software-i-like"
           text="Software I like"
         />
+        <ArticleLink
+          to="/blog/top-tips"
+          text="Tips From Building This Site"
+        />
       </div>
     </Layout>
   );
