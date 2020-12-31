@@ -1,10 +1,8 @@
 import React, {
   useState,
-  useEffect,
 } from 'react';
 
 import Img from 'gatsby-image';
-import { Image } from './Image';
 import styles from './ImageGrid.module.css';
 
 const ImageGrid = ({ images }) => {
@@ -49,7 +47,7 @@ const ImageGrid = ({ images }) => {
     setImage(index);
   };
 
-  const closeLightbox = (index) => {
+  const closeLightbox = () => {
     setIsOpen(false);
     setImage(0);
   };
@@ -100,18 +98,18 @@ const ImageGrid = ({ images }) => {
             className={styles.lightbox}
           >
             <Img
-              fluid={fullArray[image]}
-              className={
-                styles.lightboxImage
-              }
-              imgStyle={{objectFit: 'contain'}}
-              fadeIn={true}
-              placeholderStyle={{
-                opacity: 0,
-                border: 'none',
-                display: 'none',
-              }}
-            ></Img>
+    fluid={fullArray[image]}
+    className={
+      styles.lightboxImage
+    }
+    imgStyle={{objectFit: 'contain'}}
+    fadeIn={true}
+    placeholderStyle={{
+      opacity: 0,
+      border: 'none',
+      display: 'none',
+    }}
+    />
           </div>
         </>
       )}

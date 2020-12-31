@@ -1,6 +1,4 @@
 import * as React from "react";
-import { Link } from 'gatsby';
-
 
 import Layout from '../components/Layout';
 import ArticleLink from '../components/ArticleLink';
@@ -18,6 +16,13 @@ const IndexPage = () => {
   return (
     <Layout>
       <div style={centered}>
+        <ArticleLink
+          to="/experiments/CssTests"
+          text="Experiment - CSS Tests"
+        />{' '}        <ArticleLink
+          to="/experiments/svgAnimations"
+          text="Experiment - Animating SVG"
+        />{' '}
         <ArticleLink
           to="/rolls/2"
           text="Photography - Pentax MX Maiden Voyage"

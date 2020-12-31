@@ -15,9 +15,6 @@ export default function Template({
     <Layout>
       <div className="blog-post-container">
         <div className="blog-post">
-          <div
-            className={styles.divider}
-          ></div>
           <h1>{frontmatter.title}</h1>
           <div className={styles.date}>
             {frontmatter.date}

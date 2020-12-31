@@ -1,0 +1,104 @@
+/*
+ * Keyframes
+ */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDownFromHighUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -75px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/*
+ * CSS Page Transitions
+ * Don't forget to add vendor prefixes!
+ */
+  /** Basic styles for an animated element */
+  .scene-element {
+    animation-duration: 5s;
+    transition-timing-function: ease-in;
+    animation-fill-mode: both;
+
+  }
+
+  /** An element that fades in */
+  .fadeIn {
+        animation-duration: 250ms;
+    transition-timing-function: ease-in;
+    animation-fill-mode: both;
+    animation-name: fadeIn;
+  }
+  /** An element that fades in from the top */
+  .fadeDown {
+        animation-duration: 2000ms;
+    transition-timing-function: ease-in;
+    animation-fill-mode: both;
+    animation-name: fadeInDown;
+  }
+  .fadeDownFromHighUp {
+        animation-duration: 2000ms;
+    transition-timing-function: ease-in;
+    animation-fill-mode: both;
+    animation-name: fadeInDownFromHighUp;
+  }
+
+  /** An element that fades in and slides up */
+  .scene-element--fadeinup {
+    animation-name: fadeInUp;
+  }
+
+  /** An element that fades in and slides from the right */
+  .scene-element--fadeinright {
+    animation-name: fadeInRight;
+  }

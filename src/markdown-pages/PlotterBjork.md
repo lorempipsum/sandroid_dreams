@@ -8,7 +8,7 @@ title: "Plotterbjork"
 
 ![Input file](../data/images/plotting/bjork.jpg)
 
-One of the more basic things you can do with a plotter is pointillism. That's the technique of creating an image out of tiny dots - the same mechanism screens use to display images, the dots being different coloured pixels. By varying the distance between the dots according to the brigthness of the underlying image, you can get a low resolution interpretation of it.
+One of the more basic things you can do with a plotter is pointillism. That's the technique of creating an image out of tiny dots - the same mechanism screens use to display images, the dots being different coloured pixels. By varying the distance between the dots according to the brightness of the underlying image, you can get a low resolution interpretation of it.
 
 It sounds like a fun thing to try, but in the end I was left a little disappointed by my results. The main problem I had with is that the output just looks like the output from a poor inkjet printer, and doesn't have much of the characteristics of using a plotter in it. Sure, if you look closely you can see the variations in the dots (caused by the pen being at an angle or due to variations in the ink flow), but each dot is small and specific enough that it's a little boring.
 
@@ -18,7 +18,7 @@ Here's my basic workflow for this:
 
 
 
-1. Load up an image, and starting at the top left, get the brightness informatio n for a pixel at (x, y).
+1. Load up an image, and starting at the top left, get the brightness information for a pixel at (x, y).
     ```
         img = loadImage("Bjork_EB.jpg");
         int imageW = img.width;
@@ -46,7 +46,7 @@ Here's my basic workflow for this:
           step = round(random(3, 6));
       }
         ```
-    3. If the pixels are not in the middle, draw the pixel only 5% of the time, and choose a large step value so we can skip over empty parts.
+    3. If the pixels are not in the middle, draw the pixel only 5% of the time, and choose a large step value, so we can skip over empty parts.
         ```
          else {
           step = int(random(5, 15));
@@ -56,9 +56,9 @@ Here's my basic workflow for this:
           }
          }
         ```
-3. Choose a new point on the x-axis depending on the *step* value, and repeat until end of the row, and start again from a new y. Repeat until the whole picture is done.
+3. Choose a new point on the x-axis depending on the *step* value, and repeat until the end of the row, and start again from a new y. Repeat until the whole picture is done.
 
-I was hoping that by using such probabilistic rules, some of the characteristics of them would be remain visible in the final plot. As in, you would almost be able to almost deduce the rules by looking at the image, or your brain subconsciously could. I don't think it really worked, as the final image looks nice, but pretty ordinary.
+I was hoping that by using such probabilistic rules, some characteristics of them would remain visible in the final plot. As in, you would almost be able to almost deduce the rules by looking at the image, or your brain subconsciously could. I don't think it really worked, as the final image looks nice, but pretty ordinary.
 
 I was surprised how easy it is to work with images in Processing though. I had avoided it until this, but it's not that bad!
 

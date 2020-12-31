@@ -1,0 +1,50 @@
+.noBorder {
+    border: none !important;
+}
+
+.flexContainer {
+    border: 2px solid gray;
+    width: 100%;
+    display: flex;
+    content: "flexContainer";
+
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 25px );
+    grid-gap: 5px;
+}
+
+.justifyCenter {
+    justify-content: center;
+}
+
+.justifySpaceEvenly {
+    justify-content: space-evenly;
+}
+
+.flexBox {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    transition: background-color 0.5s ease;
+
+    /* shadows on left and right of the box */
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.25);
+    clip-path: inset(0px -15px 0px -15px);
+
+}
+
+.small {
+    width: 25px;
+    height: 25px;
+}
+
+.flexButton {
+    display: flex;
+    background: none;
+    cursor: pointer;
+
+}

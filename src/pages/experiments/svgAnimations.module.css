@@ -1,0 +1,28 @@
+
+@keyframes ballBounce {
+    100% { background-position: 0 -1536px; }
+}
+
+
+.bounce {
+    width:64px;
+    height: 64px;
+    background: url('./fbf_ball_bounce.svg');
+    animation: ballBounce 1s steps(24) infinite;
+    margin:auto;
+}
+.scrollBounce {
+    width:64px;
+    height: 64px;
+    background: url('./fbf_ball_bounce.svg');
+    animation: ballBounce 4s linear infinite;
+    margin:auto;
+}
+
+.starField {
+    width:64px;
+    height: 64px;
+    background: url('./starField.svg');
+    animation: ballBounce 4s linear infinite;
+    margin:auto;
+}
