@@ -12,9 +12,12 @@
 
 .gridContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 25px );
+
+    /* The auto-fit width needs to be width-of-box+grid-gap */
+    grid-template-columns: repeat(auto-fit, 30px );
     grid-gap: 5px;
 }
+
 
 .justifyCenter {
     justify-content: center;
@@ -30,16 +33,46 @@
     height: 100px;
     border: 2px solid black;
     transition: background-color 0.5s ease;
-
     /* shadows on left and right of the box */
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.25);
     clip-path: inset(0px -15px 0px -15px);
 
 }
 
+.codeBox {
+    display: flex;
+    transition: background-color 0.5s ease;
+}
+
+.oneLine {
+    width: 30ch;
+}
+
+.autoWidth {
+    width: auto;
+}
+
+.columnFlex {
+    flex-direction: column;
+}
+
 .small {
     width: 25px;
     height: 25px;
+}
+
+.pixelGrid {
+    display: grid;
+
+    /* The auto-fit width needs to be width-of-box+grid-gap */
+    grid-template-columns: repeat(auto-fit, 6px);
+    grid-gap: 1px;
+}
+
+.pixelWidth {
+    width: 5px;
+    height: 5px;
+    border: none;
 }
 
 .flexButton {

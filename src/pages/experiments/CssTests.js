@@ -32,7 +32,7 @@ const setColors = (color) => {
         const color = inputColor?.length ? inputColor : randomColor();
         setTimeout(() => {
             boxes[i].style.backgroundColor = color;
-        },  i*timeoutLength - i*i*step);
+        }, i * timeoutLength - i * i * step);
     }
     //.style.backgroundColor="#" + randomColor;
 }
@@ -77,36 +77,44 @@ const CssTests = ({}) => {
     }
 
     return (<Layout>
-        <div class="flexContainer justifySpaceEvenly noBorder">
-            <button class="flexButton" onClick={() => flipPartyMode(isPartyMode)} id="partyButton">Party Mode</button>
-            <button class="flexButton" onClick={() => setColors()} id="generateColors">Colour the boxes</button>
-            <button class="flexButton" onClick={() => resetBackground(lastInterval)} id="resetColors">Reset colors
+        <div className="flexContainer justifySpaceEvenly noBorder">
+            <button className="flexButton" onClick={() => flipPartyMode(isPartyMode)} id="partyButton">Party Mode</button>
+            <button className="flexButton" onClick={() => setColors()} id="generateColors">Colour the boxes</button>
+            <button className="flexButton" onClick={() => resetBackground(lastInterval)} id="resetColors">Reset colors
             </button>
+        </div>
+        <div className="justifyCenter noBorder flexContainer {
+">
+            <div className="codeBox oneLine noBorder">
+                <pre><span>State variables:</span>{"\n"}{"\n"}<code>isPartyMode: {JSON.stringify(isPartyMode)}</code>{"\n"}
+                    <code>lastInterval: {JSON.stringify(lastInterval)}</code>  </pre>
+            </div>
         </div>
 
         <p><span>A lovely flex container and a centered flexbox: </span></p>
-        <div class="flexContainer justifyCenter">
-            <div class="flexBox"/>
+        <div className="flexContainer justifyCenter">
+            <div className="flexBox"/>
         </div>
         <p><span>Flex container with three flexboxes with even spacing: </span></p>
-        <div class="flexContainer justifySpaceEvenly">
-            <div class="flexBox"/>
-            <div class="flexBox"/>
-            <div class="flexBox"/>
+        <div className="flexContainer justifySpaceEvenly">
+            <div className="flexBox"/>
+            <div className="flexBox"/>
+            <div className="flexBox"/>
         </div>
         <p><span>Stupid amount of boxes: </span></p>
-        <div class="flexContainer justifySpaceEvenly">
+        <div className="flexContainer justifySpaceEvenly">
             {[...Array(50)].map((e, i) => <div className="flexBox"/>
             )
             }
         </div>
         <p><span>Stupid amount of boxes in an AUTO grid: </span></p>
-        <div class="gridContainer justifySpaceEvenly">
+        <div className="gridContainer justifySpaceEvenly">
             {[...Array(200)].map((e, i) => <div className="flexBox small"/>
             )
             }
 
         </div>
+
     </Layout>)
 }
 

@@ -34,6 +34,7 @@ img {
 }
 
 pre, code {
+
   background-color: whitesmoke;
   overflow-x: auto;
   white-space: pre-wrap;
@@ -42,6 +43,7 @@ pre, code {
 
 pre {
   padding: 10px;
+    width: 100%;
 }
 
 .divider {
