@@ -6,15 +6,16 @@
     border: 2px solid gray;
     width: 100%;
     display: flex;
-    margin-top: 1.9em;
-    margin-bottom: 1.9em;
+    content: "flexContainer";
+
 }
 
 .gridContainer {
     display: grid;
-
+    justify-content: center;
     /* The auto-fit width needs to be width-of-box+grid-gap */
-    grid-template-columns: repeat(auto-fit, 30px );
+    grid-template-columns: repeat(15, calc(95vw/20));
+    grid-template-rows: repeat(15, calc(95vw/20));
     grid-gap: 5px;
 }
 
@@ -29,8 +30,8 @@
 
 .flexBox {
     display: flex;
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
     border: 2px solid black;
     transition: background-color 0.5s ease;
     /* shadows on left and right of the box */
@@ -53,11 +54,6 @@
 
 .columnFlex {
     flex-direction: column;
-}
-
-.small {
-    width: 25px;
-    height: 25px;
 }
 
 .pixelGrid {

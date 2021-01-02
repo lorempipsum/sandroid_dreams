@@ -1,0 +1,13 @@
+.container {
+    justify-content: center;
+    border: none;
+    width: 100%;
+    display: flex;
+}
+
+.codeBox {
+    display: flex;
+    transition: background-color 5s ease;
+    width: 30ch;
+    border: none;
+}

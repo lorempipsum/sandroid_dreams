@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 
 import Layout from '../../components/Layout';
+import StateVariablesBox from './StateVariables';
 
 import './CssTests.css';
 
@@ -63,7 +64,9 @@ const resetBackground = (interval) => {
     setColors('#ffffff');
 }
 
-const CssTests = ({}) => {
+const CssTests = (
+    {}
+) => {
     const [isPartyMode, setIsPartyMode] = useState(false);
     const [lastInterval, setLastInterval] = useState(0);
 
@@ -78,35 +81,37 @@ const CssTests = ({}) => {
 
     return (<Layout>
         <div className="flexContainer justifySpaceEvenly noBorder">
-            <button className="flexButton" onClick={() => flipPartyMode(isPartyMode)} id="partyButton">Party Mode</button>
+            <button className="flexButton" onClick={() => flipPartyMode(isPartyMode)} id="partyButton">Party Mode
+            </button>
             <button className="flexButton" onClick={() => setColors()} id="generateColors">Colour the boxes</button>
-            <button className="flexButton" onClick={() => resetBackground(lastInterval)} id="resetColors">Reset colors
+            <button className="flexButton" onClick={() => resetBackground(lastInterval)} id="resetColors">Reset
+                colors
             </button>
         </div>
-        <div className="justifyCenter noBorder flexContainer {
-">
-            <div className="codeBox oneLine noBorder">
-                <pre><span>State variables:</span>{"\n"}{"\n"}<code>isPartyMode: {JSON.stringify(isPartyMode)}</code>{"\n"}
-                    <code>lastInterval: {JSON.stringify(lastInterval)}</code>  </pre>
-            </div>
-        </div>
+        <StateVariablesBox
+            variables={{isPartyMode: JSON.stringify(isPartyMode), lastInterval: JSON.stringify(lastInterval)}}/>
 
         <p><span>A lovely flex container and a centered flexbox: </span></p>
         <div className="flexContainer justifyCenter">
             <div className="flexBox"/>
         </div>
+
+
         <p><span>Flex container with three flexboxes with even spacing: </span></p>
         <div className="flexContainer justifySpaceEvenly">
             <div className="flexBox"/>
             <div className="flexBox"/>
             <div className="flexBox"/>
         </div>
+
         <p><span>Stupid amount of boxes: </span></p>
         <div className="flexContainer justifySpaceEvenly">
             {[...Array(50)].map((e, i) => <div className="flexBox"/>
             )
             }
         </div>
+        <div className="spacer"/>
+
         <p><span>Stupid amount of boxes in an AUTO grid: </span></p>
         <div className="gridContainer justifySpaceEvenly">
             {[...Array(200)].map((e, i) => <div className="flexBox small"/>

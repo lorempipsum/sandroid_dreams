@@ -21,6 +21,7 @@ After the panda came out looking fabulous I went ahead and plotted some other
 black and white animals:
 
 ![Orca](../data/images/plotting/orca.jpg)
+
 Code modified to bias the lines from left to right, to sell the illusion of movement, and give the orca a *slick* look.
 
 Full code below without the setup() and helper functions for drawing lines etc.
