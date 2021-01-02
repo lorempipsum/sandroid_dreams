@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import Layout from '../../components/Layout';
 import StateVariablesBox from './StateVariables';
-
+import ButtonContainer from "./ButtonContainer";
 import './CssTests.css';
 
 
@@ -80,14 +80,15 @@ const CssTests = (
     }
 
     return (<Layout>
-        <div className="flexContainer justifySpaceEvenly noBorder">
+        <ButtonContainer>
             <button className="flexButton" onClick={() => flipPartyMode(isPartyMode)} id="partyButton">Party Mode
             </button>
             <button className="flexButton" onClick={() => setColors()} id="generateColors">Colour the boxes</button>
             <button className="flexButton" onClick={() => resetBackground(lastInterval)} id="resetColors">Reset
                 colors
             </button>
-        </div>
+        </ButtonContainer>
+
         <StateVariablesBox
             variables={{isPartyMode: JSON.stringify(isPartyMode), lastInterval: JSON.stringify(lastInterval)}}/>
 

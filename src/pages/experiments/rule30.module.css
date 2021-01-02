@@ -14,9 +14,16 @@
     display: grid;
     justify-content: center;
     /* The auto-fit width needs to be width-of-box+grid-gap */
-    grid-template-columns: repeat(15, calc(95vw/20));
-    grid-template-rows: repeat(15, calc(95vw/20));
-    grid-gap: 5px;
+    grid-template-columns: repeat(100, calc(95vw/100));
+    grid-template-rows: repeat(100, calc(95vw/100));
+}
+
+.oneRowGridContainer {
+    display: grid;
+    justify-content: center;
+    /* The auto-fit width needs to be width-of-box+grid-gap */
+    grid-template-columns: repeat(100, calc(95vw/100));
+    grid-template-rows: repeat(1, calc(95vw/100));
 }
 
 
@@ -32,11 +39,19 @@
     display: flex;
     width: 100%;
     height: 100%;
-    border: 2px solid black;
+    border: 1px solid black;
     transition: background-color 0.5s ease;
     /* shadows on left and right of the box */
-    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
     clip-path: inset(0px -15px 0px -15px);
+}
+
+.blackBox {
+    background-color: black;
+}
+
+.redBox {
+    background-color: palevioletred;
 }
 
 .codeBox {
