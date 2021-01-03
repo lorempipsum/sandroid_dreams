@@ -73,10 +73,3 @@
     height: 5px;
     border: none;
 }
-
-.flexButton {
-    display: flex;
-    background: none;
-    cursor: pointer;
-
-}

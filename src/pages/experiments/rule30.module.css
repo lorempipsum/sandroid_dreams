@@ -14,16 +14,16 @@
     display: grid;
     justify-content: center;
     /* The auto-fit width needs to be width-of-box+grid-gap */
-    grid-template-columns: repeat(100, calc(95vw/100));
-    grid-template-rows: repeat(100, calc(95vw/100));
+    grid-template-columns: repeat(100, calc(min(95vw, 600px)/100));
+    grid-template-rows: repeat(100, calc(min(95vw, 600px)/100));
 }
 
 .oneRowGridContainer {
     display: grid;
     justify-content: center;
     /* The auto-fit width needs to be width-of-box+grid-gap */
-    grid-template-columns: repeat(100, calc(95vw/100));
-    grid-template-rows: repeat(1, calc(95vw/100));
+    grid-template-columns: repeat(100, calc(min(95vw, 600px)/100));
+    grid-template-rows: repeat(1, calc(min(95vw, 600px)/100));
 }
 
 
@@ -39,11 +39,9 @@
     display: flex;
     width: 100%;
     height: 100%;
-    border: 1px solid black;
+    border: 1px solid #333333;
     transition: background-color 0.5s ease;
     /* shadows on left and right of the box */
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-    clip-path: inset(0px -15px 0px -15px);
 }
 
 .blackBox {
@@ -52,6 +50,10 @@
 
 .redBox {
     background-color: palevioletred;
+}
+
+.noBorderBottom {
+    border-bottom: none;
 }
 
 .codeBox {

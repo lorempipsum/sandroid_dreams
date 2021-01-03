@@ -1,0 +1,6 @@
+
+.flexButton {
+    display: flex;
+    background: none;
+    cursor: pointer;
+}

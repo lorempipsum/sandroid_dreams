@@ -13,10 +13,13 @@ const StateVariables = ({variables}) => {
 
     let variableArray = [];
 
-    for (const [key, value] of Object.entries(variables)) {
-        variableArray.push(codeSnippet(key, value));
-    }
+    if (variables) {
 
+        for (const [key, value] of Object.entries(variables)) {
+            variableArray.push(codeSnippet(key, value));
+        }
+    }
+    
     return (
         <div className={styles.container}>
             <div className={styles.codeBox}>

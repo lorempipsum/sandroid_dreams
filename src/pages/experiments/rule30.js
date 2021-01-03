@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 
 import Layout from '../../components/Layout';
-import StateVariablesBox from './StateVariables';
+import StateVariablesBox from '../../components/StateVariables';
 
 import styles from './rule30.module.css';
-import ButtonContainer from "./ButtonContainer";
+import ButtonContainer from "../../components/ButtonContainer";
+import Button from "../../components/Button";
 
 const Rule30 = () => {
 
@@ -14,7 +15,10 @@ const Rule30 = () => {
     const [config, setConfig] = useState(initialConfig);
     const [configs, setConfigs] = useState([initialConfig]);
     const [time, setTime] = useState(0);
+    const [timeStep, setTimeStep] = useState(1000);
     const [lastInterval, setLastInterval] = useState(0);
+
+    const variables = {lastInterval: lastInterval, time: time, timeStep: timeStep};
 
     const getNewConfig = (config) => {
         let new_config = new Array(100).fill(0);
@@ -32,33 +36,46 @@ const Rule30 = () => {
         return new_config;
     }
     useEffect(() => {
-        if (time < 100) {
-            let interval = setInterval(() => {
-                setTime(time => time + 1);
+        let interval = setInterval(() => {
+            setTime(time => time + 1);
+            if (time < 49) {
+
                 let newConfig = getNewConfig(config);
                 setConfig(newConfig);
                 setConfigs(configs => [...configs, newConfig]);
+            }
 
-            }, 1000);
+        }, timeStep);
 
-            return () => clearInterval(interval);
-        }
+        return () => clearInterval(interval);
 
-    }, [config])
 
-    const startSimulation = () => {
-        alert("This button not implemented")
+    }, [config, time, timeStep])
+
+    const speedUp = () => {
+        setTimeStep(timeStep => timeStep / 2)
+    }
+    const slowDown = () => {
+        setTimeStep(timeStep => timeStep * 1.5)
+    }
+    const reset = () => {
+        setTimeStep(timeStep => 1000);
+        setTime(0);
+        setConfig(initialConfig);
+        setConfigs([initialConfig]);
     }
 
-    console.log(config);
-    console.log(configs);
+
     return <Layout title="Experiments - Rule 30">
-        <div><p>Genuary day 2 test</p></div>
+        <StateVariablesBox variables={variables}/>
         <ButtonContainer>
-            <button className="flexButton" onClick={() => startSimulation()} id="partyButton">Party Mode
-            </button>
+            <Button onClick={() => speedUp()} id="speedUpButton" label="Speed Up">
+            </Button>
+            <Button onClick={() => slowDown()} id="slowDownButton" label="Slow Down">
+            </Button>
+            <Button onClick={() => reset()} id="resetUpButton" label="Reset">
+            </Button>
         </ButtonContainer>
-        <StateVariablesBox variables={{lastInterval: lastInterval, config: config, time: time}}/>
         <p><span>Rule 30 running on one row: </span></p>
         <div className={styles.oneRowGridContainer}>
             {config.map((e, i) => {

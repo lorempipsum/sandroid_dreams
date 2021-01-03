@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 
 import Layout from '../../components/Layout';
-import StateVariablesBox from './StateVariables';
-import ButtonContainer from "./ButtonContainer";
+import StateVariablesBox from '../../components/StateVariables';
+import ButtonContainer from "../../components/ButtonContainer";
+import Button from "../../components/Button";
 import './CssTests.css';
 
 
@@ -58,17 +59,18 @@ const party = (isPartyMode) => {
 }
 
 
-const resetBackground = (interval) => {
-    console.log(`Clearing interval ${interval}`);
-    clearInterval(interval);
-    setColors('#ffffff');
-}
-
 const CssTests = (
     {}
 ) => {
     const [isPartyMode, setIsPartyMode] = useState(false);
     const [lastInterval, setLastInterval] = useState(0);
+
+    const resetBackground = (interval) => {
+        console.log(`Clearing interval ${interval}`);
+        clearInterval(interval);
+        setIsPartyMode(false);
+        setColors('#ffffff');
+    }
 
     const flipPartyMode = (partyMode) => {
         let interval = party(!isPartyMode);
@@ -79,18 +81,25 @@ const CssTests = (
         return setIsPartyMode((!partyMode));
     }
 
-    return (<Layout>
-        <ButtonContainer>
-            <button className="flexButton" onClick={() => flipPartyMode(isPartyMode)} id="partyButton">Party Mode
-            </button>
-            <button className="flexButton" onClick={() => setColors()} id="generateColors">Colour the boxes</button>
-            <button className="flexButton" onClick={() => resetBackground(lastInterval)} id="resetColors">Reset
-                colors
-            </button>
-        </ButtonContainer>
+    const handleSetColors = (interval) => {
+        if (interval) {
+            resetBackground(interval);
+        }
+        setColors();
+    }
 
+    return (<Layout>
         <StateVariablesBox
             variables={{isPartyMode: JSON.stringify(isPartyMode), lastInterval: JSON.stringify(lastInterval)}}/>
+
+        <ButtonContainer>
+            <Button onClick={() => flipPartyMode(isPartyMode)} id="partyButton" label="Party Mode">
+            </Button>
+            <Button onClick={() => handleSetColors(lastInterval)} id="generateColors" label="Colour the boxes"></Button>
+            <Button onClick={() => resetBackground(lastInterval)} id="resetColors" label="Reset
+                colors">
+            </Button>
+        </ButtonContainer>
 
         <p><span>A lovely flex container and a centered flexbox: </span></p>
         <div className="flexContainer justifyCenter">
