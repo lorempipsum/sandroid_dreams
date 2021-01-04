@@ -9,8 +9,9 @@ import Button from "../../components/Button";
 
 const Rule30 = () => {
 
-    const initialConfig = new Array(100).fill(0);
-    initialConfig[50] = 1;
+    const lineLength = 50;
+    const initialConfig = new Array(lineLength).fill(0);
+    initialConfig[Math.floor(lineLength/2)] = 1;
 
     const [config, setConfig] = useState(initialConfig);
     const [configs, setConfigs] = useState([initialConfig]);
@@ -21,7 +22,7 @@ const Rule30 = () => {
     const variables = {lastInterval: lastInterval, time: time, timeStep: timeStep};
 
     const getNewConfig = (config) => {
-        let new_config = new Array(100).fill(0);
+        let new_config = new Array(lineLength).fill(0);
         for (let i = 1; i < config.length - 1; i++) {
             // The formula is [left_cell XOR (central_cell OR right_cell)].
             // https://en.wikipedia.org/wiki/Rule_30
@@ -38,7 +39,7 @@ const Rule30 = () => {
     useEffect(() => {
         let interval = setInterval(() => {
             setTime(time => time + 1);
-            if (time < 49) {
+            if (time < lineLength/2) {
 
                 let newConfig = getNewConfig(config);
                 setConfig(newConfig);
@@ -84,15 +85,13 @@ const Rule30 = () => {
                     }
                     if (config[i] === 1) {
                         return <div className={`${styles.flexBox} + ' ' + ${styles.blackBox}`}/>
-                    } else {
-                        return <div className={`${styles.flexBox} + ' ' + ${styles.redBox}`}/>
                     }
                 }
             )
             }
 
         </div>
-        <p><span>Rule 30 running on all the rows: </span></p>
+        <p><span>Rule 30 running with the time increasing each row: </span></p>
         <div className={styles.gridContainer}>
             {configs.map((config) => {
                     return (

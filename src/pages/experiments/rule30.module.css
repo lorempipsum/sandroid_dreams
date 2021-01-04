@@ -14,16 +14,16 @@
     display: grid;
     justify-content: center;
     /* The auto-fit width needs to be width-of-box+grid-gap */
-    grid-template-columns: repeat(100, calc(min(95vw, 600px)/100));
-    grid-template-rows: repeat(100, calc(min(95vw, 600px)/100));
+    grid-template-columns: repeat(50, calc(min(95vw, 600px)/50));
+    grid-template-rows: repeat(50, calc(min(95vw, 600px)/50));
 }
 
 .oneRowGridContainer {
     display: grid;
     justify-content: center;
     /* The auto-fit width needs to be width-of-box+grid-gap */
-    grid-template-columns: repeat(100, calc(min(95vw, 600px)/100));
-    grid-template-rows: repeat(1, calc(min(95vw, 600px)/100));
+    grid-template-columns: repeat(50, calc(min(95vw, 600px)/50));
+    grid-template-rows: repeat(1, calc(min(95vw, 600px)/50));
 }
 
 
@@ -52,44 +52,7 @@
     background-color: palevioletred;
 }
 
-.noBorderBottom {
-    border-bottom: none;
-}
-
-.codeBox {
-    display: flex;
-    transition: background-color 0.5s ease;
-}
-
-.oneLine {
-    width: 30ch;
-}
-
-.autoWidth {
-    width: auto;
-}
 
 .columnFlex {
     flex-direction: column;
-}
-
-.pixelGrid {
-    display: grid;
-
-    /* The auto-fit width needs to be width-of-box+grid-gap */
-    grid-template-columns: repeat(auto-fit, 6px);
-    grid-gap: 1px;
-}
-
-.pixelWidth {
-    width: 5px;
-    height: 5px;
-    border: none;
-}
-
-.flexButton {
-    display: flex;
-    background: none;
-    cursor: pointer;
-
 }
