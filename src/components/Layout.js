@@ -24,7 +24,7 @@ const Layout = ({
     />
           {title && (
             <>
-              <h1 className="fadeDown">
+              <h1>
                 {title}
               </h1>{' '}
               <div
