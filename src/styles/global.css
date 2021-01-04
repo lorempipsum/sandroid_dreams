@@ -22,16 +22,21 @@ h1 {
 .inlineLink {
     color: #333;
     cursor: pointer;
-    text-decoration: none;
-    border-bottom: 1px solid #333333;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
 }
-
 
 button {
     font-family: consolas, monaco, courier, "courier new", fixed-width;
     border: none;
     margin: 2px;
     border: 1px solid black;
+}
+
+.removeDecoration {
+    /* underlining can't be overwritten normally
+    https://stackoverflow.com/questions/1823341/how-do-i-get-this-css-text-decoration-override-to-work */
+    display: inline-block;
 }
 
 p {
