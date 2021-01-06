@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import styles from './Title.module.css';
 
-import logo from './logo.svg';
+import Logo from './Logo';
+
 // styles
 
 export const Title = ({ title }) => {
@@ -13,22 +14,7 @@ export const Title = ({ title }) => {
         className={styles.headingStyles}
         to="/"
       >
-        <div>
-          <div
-            className={
-              styles.logoWithCss
-            }
-          >
-              <img src={logo}              className={styles.logo}
-/>
-          </div>
-          {/* <img
-            src={logo}
-            width="120"
-            height="120"
-            alt="Logo"
-          /> */}
-        </div>
+        <Logo />
         {title}
       </Link>
       <p>
