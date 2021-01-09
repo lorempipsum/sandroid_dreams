@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
 
 import Layout from '../../components/Layout';
-import StateVariablesBox from '../../components/StateVariables';
+import Rule30Controls from "./Rule30Controls";
+import Rule30OneRow from "./Rule30OneRow";
 
 import styles from './rule30.module.css';
-import ButtonContainer from "../../components/ButtonContainer";
-import Button from "../../components/Button";
 
 const Rule30 = () => {
 
@@ -68,29 +67,9 @@ const Rule30 = () => {
 
 
     return <Layout title="Experiments - Rule 30">
-        <StateVariablesBox variables={variables}/>
-        <ButtonContainer>
-            <Button onClick={() => speedUp()} id="speedUpButton" label="Speed Up">
-            </Button>
-            <Button onClick={() => slowDown()} id="slowDownButton" label="Slow Down">
-            </Button>
-            <Button onClick={() => reset()} id="resetUpButton" label="Reset">
-            </Button>
-        </ButtonContainer>
+        <Rule30Controls variables={variables} speedUp={speedUp} slowDown={slowDown} reset={reset}/>
         <p><span>Rule 30 running on one row: </span></p>
-        <div className={styles.oneRowGridContainer}>
-            {config.map((e, i) => {
-                    if (config[i] === 0) {
-                        return <div className={`${styles.flexBox}`}/>
-                    }
-                    if (config[i] === 1) {
-                        return <div className={`${styles.flexBox} + ' ' + ${styles.blackBox}`}/>
-                    }
-                }
-            )
-            }
-
-        </div>
+        <Rule30OneRow config={config}/>
         <p><span>Rule 30 running with the time increasing each row: </span></p>
         <div className={styles.gridContainer}>
             {configs.map((config) => {
