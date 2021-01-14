@@ -19,13 +19,16 @@ const IndexPage = () => {
                 <ArticleLink
                     to="/experiments/rule30"
                     text="Experiment - Rule 30"
+                    display
                 />{' '}                <ArticleLink
                     to="/experiments/CssTests"
                     text="Experiment - CSS Tests"
+                    display
                 />{' '}
                 <ArticleLink
                 to="/experiments/svgAnimations"
                 text="Experiment - Animating SVG"
+
             />{' '}
                 <ArticleLink
                     to="/rolls/2"
@@ -34,14 +37,17 @@ const IndexPage = () => {
                 <ArticleLink
                     to="/rolls/1"
                     text="The Infinite Photo Roll"
+                    display
                 />
                 <ArticleLink
                     to="/blog/intoxicated-shrubbery"
                     text="Plotting - Intoxicated Shrubbery"
+                    display
                 />
                 <ArticleLink
                     to="/blog/plotterbjork"
                     text="Plotting - Plotterbjork"
+                    display
                 />
                 <ArticleLink
                     to="/blog/pointillism"
@@ -50,10 +56,12 @@ const IndexPage = () => {
                 <ArticleLink
                     to="/blog/software-i-like"
                     text="Software I like"
+                    display
                 />
                 <ArticleLink
                     to="/blog/top-tips"
                     text="Tips From Building This Site"
+                    display
                 />
             </div>
         </Layout>
