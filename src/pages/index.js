@@ -31,8 +31,8 @@ const IndexPage = () => {
 
             />{' '}
                 <ArticleLink
-                    to="/rolls/2"
-                    text="Photography - Pentax MX Maiden Voyage"
+                    to="/blog/chinon-maiden-voyage"
+                    text="Photography - Chinon CP-7 Maiden Voyage"
                 />{' '}
                 <ArticleLink
                     to="/rolls/1"

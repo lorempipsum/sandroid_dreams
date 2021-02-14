@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="2bd57de2-b0cd-461a-ac1e-e643a99c39f7" name="Default Changelist" comment="">
+    <list default="true" id="2bd57de2-b0cd-461a-ac1e-e643a99c39f7" name="Default Changelist" comment="commit from webstorm">
+      <change afterPath="$PROJECT_DIR$/src/markdown-pages/chinon_cp7_maiden_voyage.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/src/components/ArticleLink.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/site/src/components/ArticleLink.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/src/components/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/src/components/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/src/components/Title.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/site/src/components/Title.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/src/pages/rolls/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/src/pages/rolls/1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CNAME" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,19 +18,49 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JsBowerSettings">
+    <node-interpreter value="project" />
+    <bower-package value="" />
+    <bower.json value="" />
+  </component>
   <component name="ProjectId" id="1lquDDmKs6WmrwIi8S28WHd5ule" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.last.introduce.type" value="CONST" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/styles/global.css" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_interpreter_path" value="wsl://Ubuntu@/home/sandroid/.nvm/versions/node/v10.19.0/bin/node" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu\home\sandroid\repos\sandroid_dreams.com\src\pages\experiments" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu\home\sandroid\repos\sandroid_dreams.com\src\components" />
+      <recent name="\\wsl$\Ubuntu\home\sandroid\repos\sandroid_dreams.com\src\pages\experiments" />
+      <recent name="\\wsl$\Ubuntu\home\sandroid\repos\sandroid_dreams.com" />
+      <recent name="\\wsl$\Ubuntu\home\sandroid\repos\sandroid_dreams.com\src\static" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="1.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/site/src/pages/rolls/1.js" working-dir="$PROJECT_DIR$/site/src/pages/rolls">
@@ -50,6 +82,16 @@
       <updated>1608336822233</updated>
       <workItem from="1608336823908" duration="211000" />
       <workItem from="1608337066786" duration="514000" />
+      <workItem from="1609252180057" duration="9566000" />
+      <workItem from="1609335824505" duration="1440000" />
+      <workItem from="1609378906685" duration="27046000" />
+      <workItem from="1609595623293" duration="17528000" />
+      <workItem from="1609685671936" duration="2103000" />
+      <workItem from="1609793947138" duration="2512000" />
+      <workItem from="1609959418178" duration="3061000" />
+      <workItem from="1610190382343" duration="6068000" />
+      <workItem from="1610662373647" duration="3840000" />
+      <workItem from="1611438836252" duration="9000" />
     </task>
     <task id="LOCAL-00001" summary="commit from webstorm">
       <created>1608336984776</created>
@@ -84,7 +126,12 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="commit from webstorm" />
     <option name="LAST_COMMIT_MESSAGE" value="commit from webstorm" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
