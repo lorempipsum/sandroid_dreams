@@ -27,6 +27,8 @@ Size an image appropriately on both desktop and mobile:
 }
 ```
 
+<br>
+
 ## Gatsby stuff
 
 The deploy script starts with gatsby clean, since gatsby has a bug where it won't

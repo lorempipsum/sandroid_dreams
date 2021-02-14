@@ -3,4 +3,8 @@ slug: "/blog/software-i-like"
 title: "Software I Like"
 ---
 
-http://topazlabs.com - I use Topaz Studio as my main photo editing driver. After using lightroom for about a decade, I finally gave up on it. Too slow, bloated and expensive with the subscription model.
+https://affinity.serif.com/en-gb/ - Affinity Photo is a cheap, good Photoshop replacement.
+
+https://www.darktable.org/ - A free, open source Lightroom alternative.
+
+https://krita.org/en/ - A free drawing / image editing program that's intuitive to use if you come from the Adobe world.
