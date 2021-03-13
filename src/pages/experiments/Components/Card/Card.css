@@ -1,0 +1,74 @@
+
+.card {
+  width: 30ch;
+  height: fit-content;
+  min-height: 20ch;
+  border-radius: 15px;
+  box-shadow: 1px 1px 15px #E8E8E8;
+  display: grid;
+  grid-template-rows: auto auto 2.2em;
+  position: relative;
+    border: 1px solid gainsboro;
+
+}
+
+.new-card {
+  width: 30ch;
+  min-height: 20ch;
+  border-radius: 15px;
+  box-shadow: 1px 1px 15px #E8E8E8;
+  border: 1px solid gainsboro;
+  display: grid;
+  grid-template-rows: 2.2em auto ;
+  position: relative;
+}
+
+.new-card .plusIcon {
+  margin: auto;
+  height: 64px;
+  width: 64px;
+  margin-top: 15px;
+  grid-row: 2;
+}
+
+.new-card .card-title {
+  margin: auto;
+  margin-top: 2ch;
+}
+
+.card-title {
+  margin-left: 1ch;
+  margin-top: 2ch;
+  margin-right: 2ch;
+  font-family: Tahoma, sans-serif;
+  font-weight: 550;
+
+}
+
+.card-description {
+  margin-left: 1ch;
+  margin-right: 2ch;
+  margin-top: 1ch;
+  font-family: Tahoma, sans-serif;
+  font-weight: 400;
+  padding-bottom: 0;
+}
+
+.card-tags {
+  width: 100%;
+  position: absolute;
+  bottom:0;
+  /* background-color: goldenrod; */
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.card-tags > * {
+  margin-left: 1ch;
+  padding-top: 5px;
+  padding-bottom: 0.5em;
+}
+
+.invisible {
+  border: 2px solid red;
+}
