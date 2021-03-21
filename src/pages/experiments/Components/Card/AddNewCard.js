@@ -6,13 +6,14 @@ import './Card.css';
 const AddNewCard = ({
 }) => {
   return (
-    <div
-      className="card new-card"
-    >
+    <div className="card new-card">
       <div className="card-title">
         Add New Card
       </div>
-        <img className="plusIcon" src={plusIcon} />
+      <img
+        className="plusIcon"
+        src={plusIcon}
+      />
     </div>
   );
 };
