@@ -1,6 +1,9 @@
 import React from 'react';
 
-import { complementaryColor, randomColor } from '../../Utilities/randomColor';
+import {
+  complementaryColor,
+  randomColor,
+} from '../../Utilities/randomColor';
 
 import ChilliIcon from './ChilliIcon';
 
@@ -15,27 +18,21 @@ const Card = ({
     backgroundColor
   );
   return (
-    <div className="card">
+    <div
+      style={{
+        backgroundColor: backgroundColor,
+      }}
+      className="card glowing "
+    >
       <div className="card-title">
         {title}
       </div>
       <div className="card-description">
         {description}
       </div>
-      <div
-        style={{
-          backgroundColor: tagsColor,
-        }}
-        className="card-tags"
-      >
+      <div className="card-tags">
         <ChilliIcon />
       </div>
-      <div
-        style={{
-          backgroundColor: backgroundColor,
-        }}
-        className="box"
-      ></div>
     </div>
   );
 };

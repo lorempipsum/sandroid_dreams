@@ -16,6 +16,11 @@ const IndexPage = () => {
     <Layout>
       <div style={centered}>
         <ArticleLink
+          to="/TOSE/Tose"
+          text="Experiment - TOSE"
+          display
+        />{' '}
+        <ArticleLink
           to="/experiments/newPage"
           text="Experiment - New Page"
           display
