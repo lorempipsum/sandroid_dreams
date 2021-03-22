@@ -19,7 +19,7 @@ const Tose = () => {
         'starfield'
       ),
       context = canvas.getContext('2d'),
-      stars = 500,
+      stars = 2000,
       colorrange = [0, 60, 240];
     for (var i = 0; i < stars; i++) {
       let x =
@@ -57,9 +57,30 @@ const Tose = () => {
           width="1920"
           height="1080"
         ></canvas>
-        <div
-          className={styles.header}
-        ></div>
+        <div className={styles.header}>
+          <ul>
+            <li>
+              <a href="default.asp">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="news.asp">
+                News
+              </a>
+            </li>
+            <li>
+              <a href="contact.asp">
+                Contact
+              </a>
+            </li>
+            <li>
+              <a href="about.asp">
+                About
+              </a>
+            </li>
+          </ul>
+        </div>
         <div className={styles.title}>
           {' '}
           The Order Of Simulated

@@ -17,6 +17,7 @@
                         "title title title"
                         "leftside content rightside"
                         ;
+
 }
 .tosetitle {
   color: var(--my-yellow);
@@ -24,7 +25,26 @@
 
 .header {
   grid-area: header;
-  height: 15vh;
+  height: 50px;
+  background: whitesmoke;
+    vertical-align: middle;
+  position: relative;
+}
+
+.header ul {
+  list-style-type: none;
+  margin: auto;
+  padding: 0;
+  float: right;
+  margin-right: 10vw;
+  margin-top: 13px;
+
+}
+
+.header li {
+  display: inline;
+  font-size: 18px;
+  margin-left: 2ch;
 }
 
 .title {
@@ -66,4 +86,39 @@ canvas {
     background: #111;
     position: absolute;
     z-index: -10;
+}
+
+
+@keyframes neon-magenta {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px var(--my-magenta), 0 0 70px var(--my-magenta), 0 0 80px var(--my-magenta), rgb(117, 137, 158)px var(--my-magenta), 0 0 150px var(--my-magenta);
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px var(--my-magenta), 0 0 35px var(--my-magenta), 0 0 40px var(--my-magenta), 0 0 50px var(--my-magenta), 0 0 75px var(--my-magenta);
+  }
+}
+
+@keyframes neon-yellow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px var(--my-yellow), 0 0 70px var(--my-yellow), 0 0 80px var(--my-yellow), rgb(117, 137, 158)px var(--my-yellow), 0 0 150px var(--my-yellow);
+  }
+  to {
+    text-shadow: 0 0 1px #fff, 0 0 3px #fff, 0 0 4px #fff, 0 0 5px var(--my-yellow), 0 0 6px var(--my-yellow), 0 0 8px var(--my-yellow), 0 0 10px var(--my-yellow), 0 0 15px var(--my-yellow);
+  }
+}
+
+
+h2:hover {
+  -webkit-animation: neon-magenta 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon-magenta 1.5s ease-in-out infinite alternate;
+  animation: neon-magenta 1.5s ease-in-out infinite alternate;
+  cursor: default;
+}
+
+
+.title:hover {
+  -webkit-animation: neon-yellow 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon-yellow 1.5s ease-in-out infinite alternate;
+  animation: neon-yellow 1.5s ease-in-out infinite alternate;
+  cursor: default;
 }
