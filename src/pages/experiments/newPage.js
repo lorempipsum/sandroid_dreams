@@ -6,7 +6,7 @@ import React, {
 import Card from './Components/Card/Card';
 import AddNewCard from './Components/Card/AddNewCard';
 
-import { TestData } from './Components/Card/testData';
+import { TestData } from '../../components/utilities/testData';
 
 import './newPage.css';
 

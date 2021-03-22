@@ -3,7 +3,7 @@ import React from 'react';
 import {
   complementaryColor,
   randomColor,
-} from '../../Utilities/randomColor';
+} from '../../../../components/utilities/randomColor';
 
 import ChilliIcon from './ChilliIcon';
 
