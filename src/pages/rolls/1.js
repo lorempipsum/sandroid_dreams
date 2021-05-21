@@ -11,6 +11,7 @@ export const query = graphql`
         sourceInstanceName: {
           eq: "images"
         }
+
         ext: { eq: ".jpg" }
       }
     ) {

@@ -16,14 +16,32 @@ const IndexPage = () => {
     <Layout>
       <div style={centered}>
         <ArticleLink
+          to="/rolls/5"
+          text="Roll 5 - Portra 400, Mamiya C3."
+
+        />
+        <ArticleLink
+          to="/rolls/4"
+          text="Roll 4 - Portra 400, Chinon CP-7m." // TODO can I get this text && to=/ path from some unified place, both here and in 4.js
+
+        />
+        <ArticleLink
+          to="/rolls/3"
+          text="Roll 3 - Ilford Delta 3200, Pentax MX."
+
+        />
+        <ArticleLink
           to="/TOSE/Tose"
           text="Experiment - TOSE"
+        />{' '}
+        <ArticleLink
+          to="/experiments/WhatIsChloeUpTo"
+          text="Experiment - What is chloe up to"
           display
         />{' '}
         <ArticleLink
           to="/experiments/newPage"
           text="Experiment - New Page"
-          display
         />{' '}
         <ArticleLink
           to="/experiments/rule30"

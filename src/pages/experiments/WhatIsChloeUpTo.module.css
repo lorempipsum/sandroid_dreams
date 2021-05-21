@@ -1,0 +1,25 @@
+.body {
+  display: grid;
+    grid-template-columns:
+    minmax(0, auto) min(600px, 95vw) minmax(0, auto);
+        margin: 20vh auto auto;
+    font-family: consolas, monaco, courier, "courier new", fixed-width, monospace;
+}
+
+.title {
+  grid-column: 2;
+  margin: auto;
+}
+
+.dateForm {
+  grid-column: 2;
+    margin: auto;
+    margin-top: 50px;
+
+}
+
+.activity {
+  grid-column: 2;
+  margin: auto;
+  margin-top: 50px;
+}

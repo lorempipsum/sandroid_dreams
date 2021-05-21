@@ -30,14 +30,14 @@ const ImageGrid = ({ images }) => {
 
   const thumbsArray = images
     .filter(
-      (thumb) => thumb !== undefined
+      (thumb) => thumb !== undefined && thumb !== null
     )
     .map(({ thumb }) => thumb);
   console.log(thumbsArray);
 
   const fullArray = images
     .filter(
-      (full) => full !== undefined
+      (full) => full !== undefined && full !== null
     )
     .map(({ full }) => full);
   console.log(fullArray);
@@ -126,6 +126,8 @@ const ImageGrid = ({ images }) => {
                 }}
               >
                 <Img
+                  loading="eager"
+                  backgroundColor="red"
                   fluid={thumbnail}
                 />
               </div>
