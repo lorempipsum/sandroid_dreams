@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{kZBz:function(e,n,a){"use strict";a.r(n);var t=a("q1tI"),r=a.n(t);n.default=function(){return r.a.createElement("div",null,r.a.createElement("span",{"aria-label":"hot",role:"img"},"🌶️"))}}}]);
+//# sourceMappingURL=component---src-pages-experiments-components-card-chilli-icon-js-e53a7ed363c3e5c586fc.js.map
