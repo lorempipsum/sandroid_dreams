@@ -13,8 +13,8 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "deploy": "gatsby clean && gatsby build && gh-pages -d public -b master",
-    "dirtydeploy": "gatsby build && gh-pages -d public -b master"
+    "deploy": "gatsby clean && gatsby build && gh-pages -r https://github.com/lorempipsum/lorempipsum.github.io -d public -b master",
+    "dirtydeploy": "gatsby build && gh-pages -r https://github.com/lorempipsum/lorempipsum.github.io  -d public -b master"
   },
   "license": "0BSD",
   "dependencies": {
