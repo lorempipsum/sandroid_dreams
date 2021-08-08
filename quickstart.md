@@ -12,3 +12,5 @@ npm install
 npm audit fix
 gatsby clean
 
+# Folders 
+
