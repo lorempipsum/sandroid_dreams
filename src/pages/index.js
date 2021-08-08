@@ -42,7 +42,6 @@ const IndexPage = () => {
         <ArticleLink
           to="/experiments/WhatIsChloeUpTo"
           text="Experiment - What is chloe up to"
-          display
         />{' '}
         <ArticleLink
           to="/experiments/newPage"
