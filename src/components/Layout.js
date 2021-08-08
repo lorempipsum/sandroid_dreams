@@ -1,5 +1,6 @@
 import React from 'react';
 import Title from './Title';
+import ArticleLink from "./ArticleLink";
 import styles from './Layout.module.css';
 
 import '../styles/animations.css';
@@ -16,6 +17,13 @@ const Layout = ({
             title={'sandroid.dev'}
           />
         </div>
+	  <div className={styles.links}>
+	    <ArticleLink
+	     to="/photography"
+	     text="Photography"
+	     display
+	  />
+	  </div>
         <div className={styles.content}>
           <div
     className={

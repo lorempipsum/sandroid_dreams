@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import Img from 'gatsby-image';
-import styles from './ImageGrid.module.css';
+import styles from './GalleryImageGrid.module.css';
 
 const LeftArrow = () => {
   return (
@@ -29,7 +29,9 @@ const RightArrow = () => {
   );
 };
 
-const ImageGrid = ({ images }) => {
+export const GalleryImageGrid = ({
+  images,
+}) => {
   // wtf is {images}?
   // Something like that I guess:
   // childImageSharp {
@@ -166,6 +168,9 @@ const ImageGrid = ({ images }) => {
                 style={{
                   cursor: 'pointer',
                 }}
+                className={
+                  styles.thumbnail
+                }
               >
                 <Img
                   loading="eager"
@@ -181,4 +186,4 @@ const ImageGrid = ({ images }) => {
   );
 };
 
-export default ImageGrid;
+export default GalleryImageGrid;
