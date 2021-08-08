@@ -16,6 +16,11 @@ const IndexPage = () => {
     <Layout>
       <div style={centered}>
         <ArticleLink
+	  to="/blog/source-control-dotenv-files"
+	  text="Using Source Control for Bash Profile Files"
+	  display
+	/>
+	<ArticleLink
           to="/rolls/5"
           text="Roll 5 - Portra 400, Mamiya C3."
 

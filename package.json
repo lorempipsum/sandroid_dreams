@@ -8,7 +8,7 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "npx gatsby develop",
+    "develop": "npx gatsby develop --host 0.0.0.0",
     "start": "npx gatsby develop",
     "build": "npxgatsby build",
     "serve": "npx gatsby serve",
@@ -41,3 +41,4 @@
     "gh-pages": "^3.1.0"
   }
 }
+
