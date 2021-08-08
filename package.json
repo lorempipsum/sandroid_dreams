@@ -8,13 +8,13 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "deploy": "gatsby clean && gatsby build && gh-pages -r https://github.com/lorempipsum/lorempipsum.github.io -d public -b master",
-    "dirtydeploy": "gatsby build && gh-pages -r https://github.com/lorempipsum/lorempipsum.github.io  -d public -b master"
+    "develop": "npx gatsby develop",
+    "start": "npx gatsby develop",
+    "build": "npxgatsby build",
+    "serve": "npx gatsby serve",
+    "clean": "npx gatsby clean",
+    "deploy": "npx gatsby clean && gatsby build && gh-pages -r https://github.com/lorempipsum/lorempipsum.github.io -d public -b master",
+    "dirtydeploy": "npx gatsby build && gh-pages -r https://github.com/lorempipsum/lorempipsum.github.io  -d public -b master"
   },
   "license": "0BSD",
   "dependencies": {
