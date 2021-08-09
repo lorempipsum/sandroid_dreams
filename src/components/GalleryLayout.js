@@ -23,16 +23,18 @@ const GalleryLayout = ({
             className={styles.heroImage}
           >
             {title && (
-              <>
+              <div
+                className={
+                  styles.heroText
+                }
+              >
                 <h1>{title}</h1>{' '}
-                <div
-                  className={
-                    styles.divider
-                  }
-                />
-              </>
+              </div>
             )}
           </div>
+          <div
+            className={styles.divider}
+          />
           <div className="fadeIn">
             {children}
           </div>
