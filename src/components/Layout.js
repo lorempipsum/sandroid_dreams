@@ -1,6 +1,6 @@
 import React from 'react';
 import Title from './Title';
-import ArticleLink from "./ArticleLink";
+import ArticleLink from './ArticleLink';
 import styles from './Layout.module.css';
 
 import '../styles/animations.css';
@@ -17,29 +17,21 @@ const Layout = ({
             title={'sandroid.dev'}
           />
         </div>
-	  <div className={styles.links}>
-	    <ArticleLink
-	     to="/photography"
-	     text="Photography"
-	     display
-	  />
-	  </div>
+
         <div className={styles.content}>
           <div
-    className={
-      styles.dividerUpper
-    }
-    />
+            className={
+              styles.dividerUpper
+            }
+          />
           {title && (
             <>
-              <h1>
-                {title}
-              </h1>{' '}
+              <h1>{title}</h1>{' '}
               <div
-    className={
-      styles.divider
-    }
-    />
+                className={
+                  styles.divider
+                }
+              />
             </>
           )}
           <div className="fadeIn">
