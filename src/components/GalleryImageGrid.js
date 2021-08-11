@@ -165,9 +165,6 @@ export const GalleryImageGrid = ({
                 onClick={() =>
                   openLightbox(index)
                 }
-                style={{
-                  cursor: 'pointer',
-                }}
                 className={
                   styles.thumbnail
                 }
