@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, {
+  useState,
+  useEffect,
+} from 'react';
 
 import Img from 'gatsby-image';
-import styles from './GalleryImageGrid.module.css';
+// import styles from './GalleryImageGrid.module.css';
+import styles from './GalleryImageGridWithBigImages.module.css';
 
 const LeftArrow = () => {
   return (
@@ -29,6 +33,93 @@ const RightArrow = () => {
   );
 };
 
+export const LightBox = ({
+  imageToDisplay,
+  handleKeyPress,
+  closeLightbox,
+  image,
+  setImage,
+}) => {
+  useEffect(() => {
+    window.removeEventListener(
+      'keyup',
+      handleKeyPress
+    );
+
+    window.addEventListener(
+      'keyup',
+      (event) => {
+        handleKeyPress(event);
+      }
+    );
+
+    // cleanup this component
+    return () => {
+      window.removeEventListener(
+        'keyup',
+        handleKeyPress
+      );
+    };
+  }, [image]);
+
+  const RightButton = () => {
+    return (
+      <button
+        className={
+          styles.previousButton
+        }
+        onClick={() =>
+          setImage(image - 1)
+        }
+      >
+        <RightArrow />
+      </button>
+    );
+  };
+
+  const LeftButton = () => {
+    return (
+      <button
+        className={styles.nextButton}
+        onClick={() =>
+          setImage(image + 1)
+        }
+      >
+        {' '}
+        <LeftArrow />
+      </button>
+    );
+  };
+
+  return (
+    <>
+      <LeftButton />
+      <RightButton />
+      <div
+        tabIndex="0"
+        onClick={() => closeLightbox()}
+        className={styles.lightbox}
+      >
+        <Img
+          fluid={imageToDisplay}
+          className={
+            styles.lightboxImage
+          }
+          imgStyle={{
+            objectFit: 'contain',
+          }}
+          fadeIn={true}
+          placeholderStyle={{
+            opacity: 0,
+            border: 'none',
+            display: 'none',
+          }}
+        />
+      </div>
+    </>
+  );
+};
+
 export const GalleryImageGrid = ({
   images,
 }) => {
@@ -49,6 +140,7 @@ export const GalleryImageGrid = ({
   // }
   // New style with all images in one prop
   // determined if page has scrolled and if the view is on mobile
+
   const [isOpen, setIsOpen] =
     useState(false);
   const [image, setImage] = useState(0);
@@ -81,47 +173,33 @@ export const GalleryImageGrid = ({
     setImage(0);
   };
 
-  const RightButton = () => {
-    return (
-      <button
-        className={
-          styles.previousButton
-        }
-        onClick={() =>
-          setImage(image - 1)
-        }
-      >
-        <RightArrow />
-      </button>
-    );
-  };
-
-  const LeftButton = () => {
-    return (
-      <button
-        className={styles.nextButton}
-        onClick={() =>
-          setImage(image + 1)
-        }
-      >
-        {' '}
-        <LeftArrow />
-      </button>
-    );
-  };
-
   const handleKeyPress = (event) => {
     console.log('KeyPress!');
-    if (event.key === 37) {
+    console.log(event.key);
+    if (event.key === 'ArrowLeft') {
+      console.log(image);
+
+      console.log('setting image -1');
       setImage(image - 1);
+      console.log(image);
     }
-    if (event.key === 39) {
-      setImage(image + 1);
+    if (event.key === 'ArrowRight') {
+      console.log('setting image +1');
+      console.log(image);
+
+      const newImage = image + 1;
+      console.log(
+        `New Image is: ${newImage}`
+      );
+      setImage(newImage);
+      console.log(image);
     }
     if (
       event.key === 'Escape' ||
       event.key === 27
     ) {
+      console.log('Closing lightbox');
+
       setIsOpen(false);
     }
   };
@@ -129,36 +207,21 @@ export const GalleryImageGrid = ({
   return (
     <>
       {isOpen && (
-        <>
-          <LeftButton />
-          <RightButton />
-          <div
-            tabIndex="0"
-            onClick={() =>
-              closeLightbox()
-            }
-            className={styles.lightbox}
-          >
-            <Img
-              fluid={fullArray[image]}
-              className={
-                styles.lightboxImage
-              }
-              imgStyle={{
-                objectFit: 'contain',
-              }}
-              fadeIn={true}
-              placeholderStyle={{
-                opacity: 0,
-                border: 'none',
-                display: 'none',
-              }}
-            />
-          </div>
-        </>
+        <LightBox
+          handleKeyPress={
+            handleKeyPress
+          }
+          imageToDisplay={
+            fullArray[image]
+          }
+          closeLightbox={closeLightbox}
+          image={image}
+          setImage={setImage}
+        ></LightBox>
       )}
       <div className={styles.imageGrid}>
-        {thumbsArray.map(
+        {fullArray.map(
+          // NOTE THAT WE ARE MAPPING THE FULLARRAY NOT THUMBSARRAY HERE
           (thumbnail, index) => {
             return (
               <div

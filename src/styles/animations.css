@@ -12,6 +12,16 @@
   }
 }
 
+@keyframes heroEntrance {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes fadeInUp {
   0% {
     opacity: 0;
@@ -72,6 +82,13 @@
 
   }
 
+  /** An element that fades in slowly*/
+  .heroEntrance {
+        animation-duration: 400ms;
+    transition-timing-function: ease-in;
+    animation-fill-mode: both;
+    animation-name: heroEntrance;
+  }
   /** An element that fades in */
   .fadeIn {
         animation-duration: 250ms;

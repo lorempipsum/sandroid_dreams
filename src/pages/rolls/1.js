@@ -11,7 +11,6 @@ export const query = graphql`
         sourceInstanceName: {
           eq: "images"
         }
-
         ext: { eq: ".jpg" }
       }
     ) {
@@ -41,7 +40,9 @@ const InfiniteRoll = ({ data }) => {
     <Layout title="The Infinite Photo Roll">
       <p>
         <span>
-          This page will automatically be updated with all the images uploaded to this site.
+          This page will automatically
+          be updated with all the images
+          uploaded to this site.
         </span>
       </p>
       <ImageGrid

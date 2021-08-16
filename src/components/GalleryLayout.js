@@ -20,7 +20,7 @@ const GalleryLayout = ({
 
         <div className={styles.content}>
           <div
-            className={styles.heroImage}
+            className={`${styles.heroImage} heroEntrance`}
           >
             {title && (
               <div
