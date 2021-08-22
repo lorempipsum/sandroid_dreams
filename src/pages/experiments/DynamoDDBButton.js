@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, {
+  useState,
+  useEffect,
+} from 'react';
 
 import axios from 'axios';
 
@@ -6,24 +9,28 @@ import Layout from '../../components/Layout';
 import ButtonContainer from '../../components/ButtonContainer';
 import Button from '../../components/Button';
 
-const API_URL =
-  'https://mhzitx2idc.execute-api.us-east-1.amazonaws.com/dev/hello';
+const INCREMENT_API_URL =
+  'https://7fqtmbuhtl.execute-api.us-east-1.amazonaws.com/dev/increment';
+const GET_COUNT_API_URL =
+  'https://7fqtmbuhtl.execute-api.us-east-1.amazonaws.com/dev/getCountLambda';
 
 const DynamoDDBButton = () => {
   const [count, setCount] = useState(0);
 
-  const handleClick = () => {
-    setCount(count + 1);
+  useEffect(() => {
     axios
-      .get(API_URL)
+      .get(GET_COUNT_API_URL)
       .then((res) =>
-        alert(
-          JSON.stringify(
-            res.data.message
-          )
-        )
+        setCount(res.data.count)
       );
-    return setCount(count + 1);
+  }, []);
+
+  const handleClick = () => {
+    axios
+      .get(INCREMENT_API_URL)
+      .then((res) =>
+        setCount(res.data.count)
+      );
   };
 
   return (
