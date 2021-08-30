@@ -1,13 +1,38 @@
-<h1 style="color:black;
-  position: absolute;
-  text-align: center;
-  margin: 0;
+<!DOCTYPE html>
+<html>
 
-  font-size: 200px;
-    top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-shadow: 2px 2px #FF0000">
-  TEST
-</h1>
+<head>
+  <style>
+    @font-face {
+      font-family: "myFirstFont";
+      src: url("./rough_typewriter.otf");
+    }
+
+    p {
+      font-family: "myFirstFont";
+      color: black;
+      position: absolute;
+      text-align: center;
+      margin: 0;
+      font-size: 100px;
+      font-weight: 900;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      letter-spacing: 1rem;
+    }
+
+    body {
+      background-color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <p>
+    SIMULATED
+  </p>
+</body>
+
+</html>

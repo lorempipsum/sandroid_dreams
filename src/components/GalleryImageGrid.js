@@ -48,9 +48,7 @@ export const LightBox = ({
 
     window.addEventListener(
       'keyup',
-      (event) => {
-        handleKeyPress(event);
-      }
+      handleKeyPress
     );
 
     // cleanup this component
@@ -176,14 +174,31 @@ export const GalleryImageGrid = ({
   const handleKeyPress = (event) => {
     console.log('KeyPress!');
     console.log(event.key);
+    const lastImage =
+      fullArray.length - 1;
+    const firstImage = 0;
     if (event.key === 'ArrowLeft') {
-      console.log(image);
+      console.log('image is: ' + image);
+
+      if (image === firstImage) {
+        console.log(
+          'setting last image'
+        );
+
+        console.log(lastImage);
+        setImage(lastImage);
+        return 0;
+      }
 
       console.log('setting image -1');
       setImage(image - 1);
       console.log(image);
     }
     if (event.key === 'ArrowRight') {
+      if (image === lastImage) {
+        setImage(firstImage);
+        return 0;
+      }
       console.log('setting image +1');
       console.log(image);
 
@@ -202,6 +217,7 @@ export const GalleryImageGrid = ({
 
       setIsOpen(false);
     }
+    return 0;
   };
 
   return (
