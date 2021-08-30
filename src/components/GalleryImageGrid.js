@@ -1,35 +1,36 @@
-import React, {
-  useState,
-  useEffect,
-} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Img from 'gatsby-image';
 // import styles from './GalleryImageGrid.module.css';
 import styles from './GalleryImageGridWithBigImages.module.css';
 
-const LeftArrow = () => {
+const RightArrow = () => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="50"
-      height="50"
-      viewBox="0 0 25 25"
-    >
-      <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-    </svg>
+    <div className={styles.arrow}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="50"
+        height="50"
+        viewBox="0 0 25 25"
+      >
+        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+      </svg>
+    </div>
   );
 };
 
-const RightArrow = () => {
+const LeftArrow = () => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="50"
-      height="50"
-      viewBox="0 0 25 25"
-    >
-      <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-    </svg>
+    <div className={styles.arrow}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="50"
+        height="50"
+        viewBox="0 0 25 25"
+      >
+        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+      </svg>{' '}
+    </div>
   );
 };
 
@@ -41,50 +42,35 @@ export const LightBox = ({
   setImage,
 }) => {
   useEffect(() => {
-    window.removeEventListener(
-      'keyup',
-      handleKeyPress
-    );
+    window.removeEventListener('keyup', handleKeyPress);
 
-    window.addEventListener(
-      'keyup',
-      handleKeyPress
-    );
+    window.addEventListener('keyup', handleKeyPress);
 
     // cleanup this component
     return () => {
-      window.removeEventListener(
-        'keyup',
-        handleKeyPress
-      );
+      window.removeEventListener('keyup', handleKeyPress);
     };
   }, [image]);
-
-  const RightButton = () => {
-    return (
-      <button
-        className={
-          styles.previousButton
-        }
-        onClick={() =>
-          setImage(image - 1)
-        }
-      >
-        <RightArrow />
-      </button>
-    );
-  };
 
   const LeftButton = () => {
     return (
       <button
+        className={styles.previousButton}
+        onClick={() => handleKeyPress({ key: 'ArrowLeft' })}
+      >
+        <LeftArrow />
+      </button>
+    );
+  };
+
+  const RightButton = () => {
+    return (
+      <button
         className={styles.nextButton}
-        onClick={() =>
-          setImage(image + 1)
-        }
+        onClick={() => handleKeyPress({ key: 'ArrowRight' })}
       >
         {' '}
-        <LeftArrow />
+        <RightArrow />
       </button>
     );
   };
@@ -100,9 +86,7 @@ export const LightBox = ({
       >
         <Img
           fluid={imageToDisplay}
-          className={
-            styles.lightboxImage
-          }
+          className={styles.lightboxImage}
           imgStyle={{
             objectFit: 'contain',
           }}
@@ -118,9 +102,7 @@ export const LightBox = ({
   );
 };
 
-export const GalleryImageGrid = ({
-  images,
-}) => {
+export const GalleryImageGrid = ({ images }) => {
   // wtf is {images}?
   // Something like that I guess:
   // childImageSharp {
@@ -139,27 +121,16 @@ export const GalleryImageGrid = ({
   // New style with all images in one prop
   // determined if page has scrolled and if the view is on mobile
 
-  const [isOpen, setIsOpen] =
-    useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [image, setImage] = useState(0);
 
   const thumbsArray = images
-    .filter(
-      (thumb) =>
-        thumb !== undefined &&
-        thumb !== null
-    )
+    .filter((thumb) => thumb !== undefined && thumb !== null)
     .map(({ thumb }) => thumb);
-  console.log(thumbsArray);
 
   const fullArray = images
-    .filter(
-      (full) =>
-        full !== undefined &&
-        full !== null
-    )
+    .filter((full) => full !== undefined && full !== null)
     .map(({ full }) => full);
-  console.log(fullArray);
 
   const openLightbox = (index) => {
     setIsOpen(true);
@@ -171,48 +142,41 @@ export const GalleryImageGrid = ({
     setImage(0);
   };
 
+  const handleLeftArrow = () => {
+    const lastImage = fullArray.length - 1;
+    const firstImage = 0;
+    if (image === firstImage) {
+      setImage(lastImage);
+      return 0;
+    }
+    setImage(image - 1);
+
+    return 0;
+  };
+
+  const handleRightArrow = () => {
+    const lastImage = fullArray.length - 1;
+    const firstImage = 0;
+    if (image === lastImage) {
+      setImage(firstImage);
+      return 0;
+    }
+    const newImage = image + 1;
+    setImage(newImage);
+    return 0;
+  };
+
   const handleKeyPress = (event) => {
     console.log('KeyPress!');
     console.log(event.key);
-    const lastImage =
-      fullArray.length - 1;
-    const firstImage = 0;
+
     if (event.key === 'ArrowLeft') {
-      console.log('image is: ' + image);
-
-      if (image === firstImage) {
-        console.log(
-          'setting last image'
-        );
-
-        console.log(lastImage);
-        setImage(lastImage);
-        return 0;
-      }
-
-      console.log('setting image -1');
-      setImage(image - 1);
-      console.log(image);
+      handleLeftArrow();
     }
     if (event.key === 'ArrowRight') {
-      if (image === lastImage) {
-        setImage(firstImage);
-        return 0;
-      }
-      console.log('setting image +1');
-      console.log(image);
-
-      const newImage = image + 1;
-      console.log(
-        `New Image is: ${newImage}`
-      );
-      setImage(newImage);
-      console.log(image);
+      handleRightArrow();
     }
-    if (
-      event.key === 'Escape' ||
-      event.key === 27
-    ) {
+    if (event.key === 'Escape' || event.key === 27) {
       console.log('Closing lightbox');
 
       setIsOpen(false);
@@ -224,39 +188,24 @@ export const GalleryImageGrid = ({
     <>
       {isOpen && (
         <LightBox
-          handleKeyPress={
-            handleKeyPress
-          }
-          imageToDisplay={
-            fullArray[image]
-          }
+          handleKeyPress={handleKeyPress}
+          imageToDisplay={fullArray[image]}
           closeLightbox={closeLightbox}
           image={image}
           setImage={setImage}
         ></LightBox>
       )}
       <div className={styles.imageGrid}>
-        {fullArray.map(
-          // NOTE THAT WE ARE MAPPING THE FULLARRAY NOT THUMBSARRAY HERE
-          (thumbnail, index) => {
-            return (
-              <div
-                onClick={() =>
-                  openLightbox(index)
-                }
-                className={
-                  styles.thumbnail
-                }
-              >
-                <Img
-                  loading="eager"
-                  backgroundColor="red"
-                  fluid={thumbnail}
-                />
-              </div>
-            );
-          }
-        )}
+        {thumbsArray.map((thumbnail, index) => {
+          return (
+            <div
+              onClick={() => openLightbox(index)}
+              className={styles.thumbnail}
+            >
+              <Img loading="eager" backgroundColor="red" fluid={thumbnail} />
+            </div>
+          );
+        })}
       </div>
     </>
   );
