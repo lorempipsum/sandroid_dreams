@@ -3,7 +3,7 @@ import Title from './Title';
 import ArticleLink from './ArticleLink';
 import styles from './GalleryLayout.module.css';
 
-import Delta3200BackgroundImage from '../data/images/rolls/3/000097180001.jpg';
+import Delta3200BackgroundImage from '../data/images/rolls/3/000097180004.jpg';
 
 import '../styles/animations.css';
 
@@ -16,11 +16,15 @@ const GalleryLayout = ({ children, title }) => {
         </div>
 
         <div className={styles.content}>
-          <img
-            src={Delta3200BackgroundImage}
-            className={`${styles.heroImage} heroEntrance`}
-            styles={{ background: Delta3200BackgroundImage }}
-          ></img>
+          <div>
+            <div
+              style={{
+                background: `url(${Delta3200BackgroundImage})`,
+                backgroundAttachment: 'fixed', // parallax
+              }}
+              className={`${styles.heroImage} heroEntrance`}
+            ></div>
+          </div>
           {title && (
             <div className={styles.heroText}>
               <h1>{title}</h1>{' '}
