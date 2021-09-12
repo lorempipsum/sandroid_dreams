@@ -9,7 +9,7 @@ export const query = graphql`
     allFile(
       filter: {
         sourceInstanceName: { eq: "images" }
-        relativeDirectory: { eq: "rolls/chinon_portra_400_mkIII" }
+        relativeDirectory: { eq: "rolls/pentax_max-ilford_HP5" }
         ext: { eq: ".jpg" }
       }
     ) {

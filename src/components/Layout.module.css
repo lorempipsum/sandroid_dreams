@@ -25,7 +25,6 @@
     grid-column: 2;
     grid-row: 2;
     justify-content: center;
-    min-width: min(95vw, 600px);
 }
 
 img {

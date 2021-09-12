@@ -5,7 +5,7 @@
   display: grid;
     margin: 3vh auto auto;
     grid-template-columns:
-    minmax(0, auto) 95vw minmax(0, auto);
+    minmax(0, auto) 85vw minmax(0, auto);
 
   /*
   // This makes the page content not jump when the scroll bar appears on the right as long content is loaded.
@@ -26,7 +26,6 @@
     grid-column: 2;
     grid-row: 2;
     justify-content: center;
-    min-width: min(95vw, 600px);
     text-align: center;
 }
 

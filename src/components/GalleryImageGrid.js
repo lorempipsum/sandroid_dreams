@@ -207,6 +207,7 @@ export const GalleryImageGrid = ({ images }) => {
           );
         })}
       </div>
+      <div className={styles.footer}></div>
     </>
   );
 };
