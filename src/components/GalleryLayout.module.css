@@ -1,4 +1,6 @@
 
+@value heroImageHeight: 500px;
+
 
 .main {
     font-family: consolas, monaco, courier, "courier new", fixed-width, monospace;
@@ -30,21 +32,23 @@
 }
 
 .heroImage {
-  height: 500px;
-  background: url("../data/images/galleryTest/_0002.jpg");
+  height: heroImageHeight;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  object-fit: cover;
   position: relative;
+  width: 100%;
 }
 
 /* Place text in the middle of the image */
 .hero-text {
   text-align: center;
   position: absolute;
-  top: 50%;
   left: 50%;
+  margin-top: calc(-1*heroImageHeight/2); /* half of heroImage width */
   transform: translate(-50%, -50%);
+  padding: 0.5rem;
+  background: black;
   color: white;
 }
 
