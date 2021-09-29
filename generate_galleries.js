@@ -1,8 +1,7 @@
 /**
  *
  * Given:
- *    There's a bunch of jpeg files in a top-level folder outside of the usual
- * gatsby filesystem
+ *    There's a bunch of jpeg files in D/Art/Photography/Somewhere
  * Do:
  *    1. Copy the files to the appropriate place
  *    2. Compress the files for the web (imagemagick? Maybe there's like a
@@ -12,3 +11,4 @@
  * like <GeneratedAlbums /> or something, and import it?
  *
  **/
+var im = require('imagemagick');
