@@ -1,4 +1,4 @@
-const { convertStringToComponentName } = require("../generate_galleries")
+import { convertStringToComponentName } from "../generate_galleries"
 
 test("FOLDER_NAME turns into folderName", () => {
   const rawFolderName = "FOLDER_NAME"

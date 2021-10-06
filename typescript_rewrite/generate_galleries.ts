@@ -11,17 +11,17 @@
  * like <GeneratedAlbums /> or something, and import it?
  *
  **/
-export {};
+export {}
 
-var im = require('imagemagick');
+var im = require("imagemagick")
 
-const path = require('path');
+const path = require("path")
 
-const fs = require('fs');
+const fs = require("fs")
 
-const albumSourceDirectoryPath = path.join(__dirname, 'ALBUM_SOURCE');
+const albumSourceDirectoryPath = path.join(__dirname, "ALBUM_SOURCE")
 
-const ACCEPTABLE_FILE_EXTENSIONS = ['.jpg', '.jpeg', '.png'];
+const ACCEPTABLE_FILE_EXTENSIONS = [".jpg", ".jpeg", ".png"]
 
 /**
  * Converts an arbitrary string to camelCase
@@ -30,20 +30,20 @@ const ACCEPTABLE_FILE_EXTENSIONS = ['.jpg', '.jpeg', '.png'];
  *
  * @returns null
  */
-const convertStringToComponentName = (inputString: string): string => {
+export const convertStringToComponentName = (inputString: string): string => {
   // TODO: Make a JEST test for this. And write this function from scartch!
-  let stringParts: string[] = [];
+  let stringParts: string[] = []
   // 1. lowercase the whole string
-  inputString = inputString.toLowerCase();
+  inputString = inputString.toLowerCase()
   // 2. Split the string by spaces.
-  let splitBySpaces = inputString.split(' ');
+  let splitBySpaces = inputString.split(" ")
 
-  splitBySpaces = splitBySpaces.map((word) => word[0].toUpperCase());
+  splitBySpaces = splitBySpaces.map(word => word[0].toUpperCase())
 
-  const camelCasedString = splitBySpaces.join();
+  const camelCasedString = splitBySpaces.join()
 
-  return camelCasedString;
-};
+  return camelCasedString
+}
 
 /**
  * Generates an album component file in src/pages/${ALBUM_NAME}
@@ -67,21 +67,21 @@ const convertStringToComponentName = (inputString: string): string => {
  * @returns
  */
 const copyAndResizeImage = (inputPath: string, outputPath: string) => {
-  const ImageMagickArgs = [inputPath, '-strip', '-quality', '75', outputPath];
+  const ImageMagickArgs = [inputPath, "-strip", "-quality", "75", outputPath]
 
   // If output file already exists, do nothing
   if (fs.existsSync(outputPath)) {
-    console.log('file already exists: ', outputPath);
-    return 1;
+    console.log("file already exists: ", outputPath)
+    return 1
   }
-  return im.convert(ImageMagickArgs, function (err: any) {
-    console.log(`converting ${inputPath}`);
+  return im.convert(ImageMagickArgs, function(err: any) {
+    console.log(`converting ${inputPath}`)
     if (err) {
-      console.log(`error converting: ${err}`);
-      console.log(inputPath);
+      console.log(`error converting: ${err}`)
+      console.log(inputPath)
     }
-  });
-};
+  })
+}
 /**
  * Check the extension of each file. If it matches a predetermined set,
  * do something to that file.
@@ -96,35 +96,35 @@ const copyFileIfJpeg = (
   folderName: string,
   originFolderPath: string
 ) => {
-  const fileNameExtension = path.extname(fileName).toLowerCase();
+  const fileNameExtension = path.extname(fileName).toLowerCase()
   if (ACCEPTABLE_FILE_EXTENSIONS.includes(fileNameExtension)) {
-    const inputPath = path.join(originFolderPath, fileName);
+    const inputPath = path.join(originFolderPath, fileName)
     const outputPath = path.join(
       `./src/data/images/generatedAlbums/`,
       folderName,
       fileName
-    );
+    )
     const outputFolder = path.join(
       `./src/data/images/generatedAlbums/`,
       folderName
-    );
+    )
     if (!fs.existsSync(outputFolder)) {
-      fs.mkdirSync(outputFolder, { recursive: true });
+      fs.mkdirSync(outputFolder, { recursive: true })
     }
-    copyAndResizeImage(inputPath, outputPath);
+    copyAndResizeImage(inputPath, outputPath)
   }
-  return 0;
-};
+  return 0
+}
 
 const loopThroughFiles = (
   files: string[],
   folderName: string,
   originFolderPath: string
 ) => {
-  return files.forEach((file) =>
+  return files.forEach(file =>
     copyFileIfJpeg(file, folderName, originFolderPath)
-  );
-};
+  )
+}
 
 /**
  * Go through each folder, collect all the filenames, and
@@ -138,31 +138,31 @@ const loopThroughFolders = (
     folderPath: string
   ) => void
 ) => {
-  return folders.forEach(function (folder) {
-    console.log(`Found folder: ${folder}`);
+  return folders.forEach(function(folder) {
+    console.log(`Found folder: ${folder}`)
 
-    const folderPath = path.join(albumSourceDirectoryPath, folder);
+    const folderPath = path.join(albumSourceDirectoryPath, folder)
 
-    fs.readdir(folderPath, function (err: unknown, files: string[]) {
+    fs.readdir(folderPath, function(err: unknown, files: string[]) {
       if (err) {
-        console.log(`Encountered an error: ${err}`);
+        console.log(`Encountered an error: ${err}`)
       }
-      functionToRunOnFiles(files, folder, folderPath);
-    });
-  });
-};
+      functionToRunOnFiles(files, folder, folderPath)
+    })
+  })
+}
 
 const main = () => {
   // Get all the folders in albumSourceDirectoryPath
-  return fs.readdir(
-    albumSourceDirectoryPath,
-    function (err: unknown, folders: string[]) {
-      if (err) {
-        console.log(`Encountered an error: ${err}`);
-      }
-      loopThroughFolders(folders, loopThroughFiles);
+  return fs.readdir(albumSourceDirectoryPath, function(
+    err: unknown,
+    folders: string[]
+  ) {
+    if (err) {
+      console.log(`Encountered an error: ${err}`)
     }
-  );
-};
+    loopThroughFolders(folders, loopThroughFiles)
+  })
+}
 
 // main();
