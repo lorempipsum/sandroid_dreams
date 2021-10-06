@@ -30,7 +30,7 @@ const ACCEPTABLE_FILE_EXTENSIONS = ['.jpg', '.jpeg', '.png'];
  *
  * @returns null
  */
-export const convertStringToComponentName = (inputString: string): string => {
+const convertStringToComponentName = (inputString: string): string => {
   // TODO: Make a JEST test for this. And write this function from scartch!
   let stringParts: string[] = [];
   // 1. lowercase the whole string
