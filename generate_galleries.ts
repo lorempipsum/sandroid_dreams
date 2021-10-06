@@ -11,6 +11,8 @@
  * like <GeneratedAlbums /> or something, and import it?
  *
  **/
+export {};
+
 var im = require('imagemagick');
 
 const path = require('path');
@@ -28,16 +30,19 @@ const ACCEPTABLE_FILE_EXTENSIONS = ['.jpg', '.jpeg', '.png'];
  *
  * @returns null
  */
-export const convertStringToComponentName = (inputString: string): string => {
+const convertStringToComponentName = (inputString: string): string => {
   // TODO: Make a JEST test for this. And write this function from scartch!
-  const stringParts: string[] = [];
+  let stringParts: string[] = [];
   // 1. lowercase the whole string
   inputString = inputString.toLowerCase();
   // 2. Split the string by spaces.
-  const spacedParts = inputString.split(' ');
-  const underlineParts = spacedParts.filter((part) => part.split('_'));
-  const dashParts = underlineParts.filter((part) => part.split('-'));
-  stringParts = [...spacedParts, ...underlineParts, ...dashParts];
+  let splitBySpaces = inputString.split(' ');
+
+  splitBySpaces = splitBySpaces.map((word) => word[0].toUpperCase());
+
+  const camelCasedString = splitBySpaces.join();
+
+  return camelCasedString;
 };
 
 /**
@@ -50,7 +55,7 @@ export const convertStringToComponentName = (inputString: string): string => {
  * 2.2 Description
  * 2.3
  */
-const generateAlbumComponentFile = (): string => {};
+// const generateAlbumComponentFile = (): string => {};
 
 /**
  *
@@ -69,7 +74,7 @@ const copyAndResizeImage = (inputPath: string, outputPath: string) => {
     console.log('file already exists: ', outputPath);
     return 1;
   }
-  return im.convert(ImageMagickArgs, function (err, stdout) {
+  return im.convert(ImageMagickArgs, function (err: any) {
     console.log(`converting ${inputPath}`);
     if (err) {
       console.log(`error converting: ${err}`);
@@ -111,7 +116,11 @@ const copyFileIfJpeg = (
   return 0;
 };
 
-const loopThroughFiles = (files, folderName, originFolderPath) => {
+const loopThroughFiles = (
+  files: string[],
+  folderName: string,
+  originFolderPath: string
+) => {
   return files.forEach((file) =>
     copyFileIfJpeg(file, folderName, originFolderPath)
   );
@@ -134,7 +143,7 @@ const loopThroughFolders = (
 
     const folderPath = path.join(albumSourceDirectoryPath, folder);
 
-    fs.readdir(folderPath, function (err, files) {
+    fs.readdir(folderPath, function (err: unknown, files: string[]) {
       if (err) {
         console.log(`Encountered an error: ${err}`);
       }
@@ -145,12 +154,15 @@ const loopThroughFolders = (
 
 const main = () => {
   // Get all the folders in albumSourceDirectoryPath
-  return fs.readdir(albumSourceDirectoryPath, function (err, folders) {
-    if (err) {
-      console.log(`Encountered an error: ${err}`);
+  return fs.readdir(
+    albumSourceDirectoryPath,
+    function (err: unknown, folders: string[]) {
+      if (err) {
+        console.log(`Encountered an error: ${err}`);
+      }
+      loopThroughFolders(folders, loopThroughFiles);
     }
-    loopThroughFolders(folders, loopThroughFiles);
-  });
+  );
 };
 
-main();
+// main();

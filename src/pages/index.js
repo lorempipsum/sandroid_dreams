@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import Layout from '../components/Layout';
 import ArticleLink from '../components/ArticleLink';
+
+import GeneratedLinks from '../components/GeneratedLinks';
 // styles
 
 const centered = {
@@ -15,6 +17,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <div style={centered}>
+        <GeneratedLinks />
         <ArticleLink
           to="/experiments/DynamoDDBButton"
           text="DDB Button"
@@ -25,10 +28,7 @@ const IndexPage = () => {
           text="Using Source Control for Bash Profile Files"
           display
         />
-        <ArticleLink
-          to="/rolls/5"
-          text="Roll 5 - Portra 400, Mamiya C3."
-        />
+        <ArticleLink to="/rolls/5" text="Roll 5 - Portra 400, Mamiya C3." />
         <ArticleLink
           to="/rolls/4"
           text="Roll 4 - Portra 400, Chinon CP-7m." // TODO can I get this text && to=/ path from some unified place, both here and in 4.js
@@ -37,18 +37,12 @@ const IndexPage = () => {
           to="/rolls/3"
           text="Roll 3 - Ilford Delta 3200, Pentax MX."
         />
-        <ArticleLink
-          to="/TOSE/Tose"
-          text="Experiment - TOSE"
-        />{' '}
+        <ArticleLink to="/TOSE/Tose" text="Experiment - TOSE" />{' '}
         <ArticleLink
           to="/experiments/WhatIsChloeUpTo"
           text="Experiment - What is chloe up to"
         />{' '}
-        <ArticleLink
-          to="/experiments/newPage"
-          text="Experiment - New Page"
-        />{' '}
+        <ArticleLink to="/experiments/newPage" text="Experiment - New Page" />{' '}
         <ArticleLink
           to="/experiments/rule30"
           text="Experiment - Rule 30"
@@ -67,11 +61,7 @@ const IndexPage = () => {
           to="/blog/chinon-maiden-voyage"
           text="Photography - Chinon CP-7 Maiden Voyage"
         />{' '}
-        <ArticleLink
-          to="/rolls/1"
-          text="The Infinite Photo Roll"
-          display
-        />
+        <ArticleLink to="/rolls/1" text="The Infinite Photo Roll" display />
         <ArticleLink
           to="/blog/intoxicated-shrubbery"
           text="Plotting - Intoxicated Shrubbery"
