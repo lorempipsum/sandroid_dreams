@@ -4,9 +4,10 @@ import { convertStringToComponentName } from './stringOperationsUtils';
 export const generateComponentInPagesDirectory = (folderName: string) => {
   const graphqlQuery = generateGraphqlQuery(folderName);
   const componentName = convertStringToComponentName(folderName);
+  const fileName = convertStringToComponentName(folderName) + '.js'; // TODO enable typescript here
 
   return createFileAndFoldersIfNeeded(
-    `./src/pages/generatedAlbums/${folderName}`,
+    `./src/pages/generatedAlbums/${fileName}`,
     `import * as React from 'react';
 import { graphql } from 'gatsby';
 
@@ -19,7 +20,7 @@ export const query = ${graphqlQuery}
 
 const ${componentName} = ({ data }) => {
   return (
-    <GalleryLayout title=${componentName}>
+    <GalleryLayout title="${componentName}">
       <p>
         <span>
           Description TBD
@@ -38,7 +39,7 @@ const ${componentName} = ({ data }) => {
   );
 };
 
-export default ArtGallery;
+export default ${componentName};
 `
   );
 };
@@ -52,11 +53,11 @@ export const generateQueryName = (camelCasedWord: string): string => {
   return camelCasedWord + 'Query';
 };
 
-export const generateGraphqlQuery = (folderName): string => {
-  const queryName = generateQueryName;
+export const generateGraphqlQuery = (folderName: string): string => {
+  const queryName = generateQueryName(folderName);
 
-  const relativeDirectory = `/generatedAlbums/${folderName}`;
-  return `export const query = graphql\`
+  const relativeDirectory = `generatedAlbums/${folderName}`;
+  return `graphql\`
   query ${queryName} {
     allFile(
       filter: {

@@ -1,5 +1,7 @@
 import * as React from 'react';
 
-export const GeneratedLinks = () => {
+const GeneratedLinks = () => {
   return <div></div>;
 };
+
+export default GeneratedLinks;
