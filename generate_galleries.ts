@@ -1,3 +1,8 @@
+import {
+  generateComponentInPagesDirectory,
+  generateGraphqlQuery,
+} from './generationUtils';
+
 /**
  *
  * Given:
@@ -22,28 +27,6 @@ const fs = require('fs');
 const albumSourceDirectoryPath = path.join(__dirname, 'ALBUM_SOURCE');
 
 const ACCEPTABLE_FILE_EXTENSIONS = ['.jpg', '.jpeg', '.png'];
-
-/**
- * Converts an arbitrary string to camelCase
- *
- * @param inputString arbitrary string to convert
- *
- * @returns null
- */
-export const convertStringToComponentName = (inputString: string): string => {
-  // TODO: Make a JEST test for this. And write this function from scartch!
-  let stringParts: string[] = [];
-  // 1. lowercase the whole string
-  inputString = inputString.toLowerCase();
-  // 2. Split the string by spaces.
-  let splitBySpaces = inputString.split(' ');
-
-  splitBySpaces = splitBySpaces.map((word) => word[0].toUpperCase());
-
-  const camelCasedString = splitBySpaces.join();
-
-  return camelCasedString;
-};
 
 /**
  * Generates an album component file in src/pages/${ALBUM_NAME}
@@ -142,6 +125,7 @@ const loopThroughFolders = (
     console.log(`Found folder: ${folder}`);
 
     const folderPath = path.join(albumSourceDirectoryPath, folder);
+    generateComponentInPagesDirectory(folder);
 
     fs.readdir(folderPath, function (err: unknown, files: string[]) {
       if (err) {

@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import GalleryLayout from '../../components/GalleryLayout';
 import GalleryImageGrid from '../../components/GalleryImageGrid';
 
-// Regular image gallery, but only show up to 3 pieces at once (they're called "pieces" in this view). Use arrow keys to slide the selection to the next 3. Or 2. Or maybe just slide it ahead by one?
+// The original idea was to build a regular image gallery, but only show up to 3 pieces at once (they're called "pieces" in this view). Use arrow keys to slide the selection to the next 3. Or 2. Or maybe just slide it ahead by one?
 
 export const query = graphql`
   query ArtGalleryImageQuery {
