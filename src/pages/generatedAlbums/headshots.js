@@ -4,8 +4,6 @@ import { graphql } from 'gatsby';
 import GalleryLayout from '../../components/GalleryLayout';
 import GalleryImageGrid from '../../components/GalleryImageGrid';
 
-// Regular image gallery, but only show up to 3 pieces at once (they're called "pieces" in this view). Use arrow keys to slide the selection to the next 3. Or 2. Or maybe just slide it ahead by one?
-
 export const query = graphql`
   query headshotsQuery {
     allFile(
@@ -36,15 +34,12 @@ const headshots = ({ data }) => {
     <GalleryLayout title="headshots">
       <p>
         <span>
-          Description TBD
+          temporary description
         </span>
       </p>
       <GalleryImageGrid
         images={data.allFile.edges.map(({ node }) => node.childImageSharp)}
       />
-      {
-        // TODO: BEFORE / AFTER Photo slider component! Show the original scan, and the edits I did to help me remember wtff I did!
-      }
       <p>
         <span></span>
       </p>

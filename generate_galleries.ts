@@ -1,5 +1,7 @@
 import {
+  generateArticleLink,
   generateComponentInPagesDirectory,
+  generateGeneratedLinksForIndex,
   generateGraphqlQuery,
 } from './generationUtils';
 
@@ -54,11 +56,11 @@ const copyAndResizeImage = (inputPath: string, outputPath: string) => {
 
   // If output file already exists, do nothing
   if (fs.existsSync(outputPath)) {
-    console.log('file already exists: ', outputPath);
+    // console.log('file already exists: ', outputPath);
     return 1;
   }
   return im.convert(ImageMagickArgs, function (err: any) {
-    console.log(`converting ${inputPath}`);
+    // console.log(`converting ${inputPath}`);
     if (err) {
       console.log(`error converting: ${err}`);
       console.log(inputPath);
@@ -119,13 +121,16 @@ const loopThroughFolders = (
     fileNames: string[],
     folder: string,
     folderPath: string
-  ) => void
+  ) => void,
+  articleLinks: string[]
 ) => {
-  return folders.forEach(function (folder) {
+  folders.forEach(function (folder) {
     console.log(`Found folder: ${folder}`);
 
     const folderPath = path.join(albumSourceDirectoryPath, folder);
     generateComponentInPagesDirectory(folder);
+    const articleLink = generateArticleLink(folder);
+    articleLinks.push(articleLink);
 
     fs.readdir(folderPath, function (err: unknown, files: string[]) {
       if (err) {
@@ -134,6 +139,8 @@ const loopThroughFolders = (
       functionToRunOnFiles(files, folder, folderPath);
     });
   });
+
+  return articleLinks;
 };
 
 const main = () => {
@@ -144,7 +151,14 @@ const main = () => {
       if (err) {
         console.log(`Encountered an error: ${err}`);
       }
-      loopThroughFolders(folders, loopThroughFiles);
+      let articleLinks: string[] = [];
+      articleLinks = loopThroughFolders(
+        folders,
+        loopThroughFiles,
+        articleLinks
+      );
+      console.log(articleLinks);
+      generateGeneratedLinksForIndex(articleLinks);
     }
   );
 };

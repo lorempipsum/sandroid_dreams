@@ -1,10 +1,34 @@
 import { createFileAndFoldersIfNeeded } from './fileSystemUtils';
 import { convertStringToComponentName } from './stringOperationsUtils';
 
+import * as React from 'react';
+
+export const generateArticleLink = (folderName: string) => {
+  const componentName = convertStringToComponentName(folderName);
+  return `<ArticleLink to="/generatedAlbums/${componentName}" text="${componentName}" display />
+`;
+};
+
+export const generateGeneratedLinksForIndex = (articleLinks: string[]) => {
+  return createFileAndFoldersIfNeeded(
+    `./src/components/GeneratedLinks.js`,
+    `import * as React from 'react';
+    import ArticleLink from './ArticleLink';
+
+  const GeneratedLinks = () => {
+  return <div>${articleLinks.join('\n')}</div>;
+};
+
+export default GeneratedLinks;`
+  );
+};
+
 export const generateComponentInPagesDirectory = (folderName: string) => {
   const graphqlQuery = generateGraphqlQuery(folderName);
   const componentName = convertStringToComponentName(folderName);
   const fileName = convertStringToComponentName(folderName) + '.js'; // TODO enable typescript here
+
+  const description = 'temporary description';
 
   return createFileAndFoldersIfNeeded(
     `./src/pages/generatedAlbums/${fileName}`,
@@ -14,8 +38,6 @@ import { graphql } from 'gatsby';
 import GalleryLayout from '../../components/GalleryLayout';
 import GalleryImageGrid from '../../components/GalleryImageGrid';
 
-// Regular image gallery, but only show up to 3 pieces at once (they're called "pieces" in this view). Use arrow keys to slide the selection to the next 3. Or 2. Or maybe just slide it ahead by one?
-
 export const query = ${graphqlQuery}
 
 const ${componentName} = ({ data }) => {
@@ -23,15 +45,12 @@ const ${componentName} = ({ data }) => {
     <GalleryLayout title="${componentName}">
       <p>
         <span>
-          Description TBD
+          ${description}
         </span>
       </p>
       <GalleryImageGrid
         images={data.allFile.edges.map(({ node }) => node.childImageSharp)}
       />
-      {
-        // TODO: BEFORE / AFTER Photo slider component! Show the original scan, and the edits I did to help me remember wtff I did!
-      }
       <p>
         <span></span>
       </p>
