@@ -32,12 +32,12 @@
 }
 
 .heroImagecontainer {
-  height: heroImageHeight;
+  height: min(heroImageHeight, 50vh);
 
 }
 
 .heroImage {
-  height: heroImageHeight;
+  height: min(heroImageHeight, 50vh);
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -51,7 +51,7 @@
   text-align: center;
   position: absolute;
   left: 50%;
-  margin-top: calc(-1*heroImageHeight/2); /* half of heroImage width */
+  margin-top: calc(-1*min(heroImageHeight, 50vh)/2); /* half of heroImage width */
   transform: translate(-50%, -50%);
   padding: 0.5rem;
   background: black;

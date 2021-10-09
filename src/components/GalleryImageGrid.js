@@ -124,6 +124,8 @@ export const GalleryImageGrid = ({ images }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [image, setImage] = useState(0);
 
+  console.log(images);
+
   const thumbsArray = images
     .filter((thumb) => thumb !== undefined && thumb !== null)
     .map(({ thumb }) => thumb);

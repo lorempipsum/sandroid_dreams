@@ -41,15 +41,18 @@ import GalleryImageGrid from '../../components/GalleryImageGrid';
 export const query = ${graphqlQuery}
 
 const ${componentName} = ({ data }) => {
+    const images = data.allFile.edges.map(({ node }) => node.childImageSharp);
+
+  const heroImage = data.file?.childImageSharp.fluid;
   return (
-    <GalleryLayout title="${componentName}">
+    <GalleryLayout title="${componentName}" heroImage={heroImage}>
       <p>
         <span>
           ${description}
         </span>
       </p>
       <GalleryImageGrid
-        images={data.allFile.edges.map(({ node }) => node.childImageSharp)}
+        images={images}
       />
       <p>
         <span></span>
@@ -90,14 +93,23 @@ export const generateGraphqlQuery = (folderName: string): string => {
           childImageSharp {
             thumb: fluid(maxWidth: 1000, maxHeight: 1000) {
               ...GatsbyImageSharpFluid
+              originalName
             }
             full: fluid(maxWidth: 2544) {
               ...GatsbyImageSharpFluid
+              originalName
             }
           }
         }
       }
     }
+      file(sourceInstanceName: {eq: "images"}, relativePath: {eq: "${relativeDirectory}/background.jpg"}) {
+    childImageSharp {
+      fluid(maxWidth: 4000) {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
   }
 \`;`;
 };

@@ -1,13 +1,15 @@
 import React from 'react';
 import Title from './Title';
 import ArticleLink from './ArticleLink';
+import Img from 'gatsby-image';
+
 import styles from './GalleryLayout.module.css';
 
 import Delta3200BackgroundImage from '../data/images/rolls/3/000097180004.jpg';
 
 import '../styles/animations.css';
 
-const GalleryLayout = ({ children, title }) => {
+const GalleryLayout = ({ children, title, heroImage }) => {
   return (
     <>
       <div className={styles.main}>
@@ -17,13 +19,10 @@ const GalleryLayout = ({ children, title }) => {
 
         <div className={styles.content}>
           <div>
-            <div
-              style={{
-                background: `url(${Delta3200BackgroundImage})`,
-                backgroundAttachment: 'fixed', // parallax
-              }}
+            <Img
+              fluid={heroImage}
               className={`${styles.heroImage} heroEntrance`}
-            ></div>
+            />
           </div>
           {title && (
             <div className={styles.heroText}>

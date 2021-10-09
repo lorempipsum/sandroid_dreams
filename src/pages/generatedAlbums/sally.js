@@ -18,27 +18,39 @@ export const query = graphql`
           childImageSharp {
             thumb: fluid(maxWidth: 1000, maxHeight: 1000) {
               ...GatsbyImageSharpFluid
+              originalName
             }
             full: fluid(maxWidth: 2544) {
               ...GatsbyImageSharpFluid
+              originalName
             }
           }
         }
       }
     }
+      file(sourceInstanceName: {eq: "images"}, relativePath: {eq: "generatedAlbums/SALLY/background.jpg"}) {
+    childImageSharp {
+      fluid(maxWidth: 4000) {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
   }
 `;
 
 const sally = ({ data }) => {
+    const images = data.allFile.edges.map(({ node }) => node.childImageSharp);
+
+  const heroImage = data.file?.childImageSharp.fluid;
   return (
-    <GalleryLayout title="sally">
+    <GalleryLayout title="sally" heroImage={heroImage}>
       <p>
         <span>
           temporary description
         </span>
       </p>
       <GalleryImageGrid
-        images={data.allFile.edges.map(({ node }) => node.childImageSharp)}
+        images={images}
       />
       <p>
         <span></span>
