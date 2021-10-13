@@ -1,8 +1,6 @@
 import { createFileAndFoldersIfNeeded } from './fileSystemUtils';
 import { convertStringToComponentName } from './stringOperationsUtils';
 
-import * as React from 'react';
-
 export const generateArticleLink = (folderName: string) => {
   const componentName = convertStringToComponentName(folderName);
   return `<ArticleLink to="/generatedAlbums/${componentName}" text="${componentName}" display />
@@ -40,8 +38,17 @@ import GalleryImageGrid from '../../components/GalleryImageGrid';
 
 export const query = ${graphqlQuery}
 
+
+export const getListOfAlbums = (albumsList) => {
+  let listOfAlbums = [];
+  listOfAlbums = albumsList.map((albumObject) => albumObject.relativePath);
+
+  return listOfAlbums;
+};
+
 const ${componentName} = ({ data }) => {
     const images = data.allFile.edges.map(({ node }) => node.childImageSharp);
+    const listOfAlbums = getListOfAlbums(data.allDirectory.nodes);
 
   const heroImage = data.file?.childImageSharp.fluid;
   return (
@@ -110,6 +117,12 @@ export const generateGraphqlQuery = (folderName: string): string => {
       }
     }
   }
+  allDirectory(filter: {sourceInstanceName: {eq: "images"}, relativeDirectory: {eq: "generatedAlbums"}}) {
+  nodes {
+    relativePath
+    name
+  }
+}
   }
 \`;`;
 };

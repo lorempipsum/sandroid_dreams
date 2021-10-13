@@ -8,7 +8,7 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "npx gatsby develop --host 0.0.0.0",
+    "develop": "npx ts-node ./generate_galleries.ts && npx gatsby develop --host 0.0.0.0",
     "start": "npx gatsby develop",
     "test": "jest",
     "build": "npxgatsby build",

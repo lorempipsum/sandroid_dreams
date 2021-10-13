@@ -35,11 +35,26 @@ export const query = graphql`
       }
     }
   }
+  allDirectory(filter: {sourceInstanceName: {eq: "images"}, relativeDirectory: {eq: "generatedAlbums"}}) {
+  nodes {
+    relativePath
+    name
+  }
+}
   }
 `;
 
+
+export const getListOfAlbums = (albumsList) => {
+  let listOfAlbums = [];
+  listOfAlbums = albumsList.map((albumObject) => albumObject.relativePath);
+
+  return listOfAlbums;
+};
+
 const landscape = ({ data }) => {
     const images = data.allFile.edges.map(({ node }) => node.childImageSharp);
+    const listOfAlbums = getListOfAlbums(data.allDirectory.nodes);
 
   const heroImage = data.file?.childImageSharp.fluid;
   return (

@@ -76,7 +76,8 @@ const copyAndResizeImage = (inputPath: string, outputPath: string) => {
  * @param originFolderPath
  * @returns
  */
-const copyFileIfJpeg = (
+
+const compressFileIfJpeg = (
   fileName: string,
   folderName: string,
   originFolderPath: string
@@ -101,15 +102,65 @@ const copyFileIfJpeg = (
   return 0;
 };
 
-const loopThroughFiles = (
-  files: string[],
-  folderName: string,
-  originFolderPath: string
-) => {
-  return files.forEach((file) =>
-    copyFileIfJpeg(file, folderName, originFolderPath)
+const compressFilesIfJpeg = (args: FileFunctionArgs) => {
+  return args.fileNames.forEach((file) =>
+    compressFileIfJpeg(file, args.folder, args.folderPath)
   );
 };
+
+/** The name of this function is a lie. It is a specific thing that does a specific bit to a folder, and is not as generic as it sounds. Thank you */
+const processFolder = (
+  folderPath: string,
+  functionToRunOnFiles: (args: FileFunctionArgs) => void,
+  functionArgs: PartialFileFunctionArgs
+) => {
+  fs.readdir(folderPath, function (err: unknown, files: string[]) {
+    if (err) {
+      console.log(`Encountered an error: ${err}`);
+    }
+    functionToRunOnFiles({
+      folder: functionArgs.folder,
+      fileNames: files,
+      folderPath: folderPath,
+    });
+  });
+
+  const outputFolder = path.join(
+    `./src/data/images/generatedAlbums/`,
+    functionArgs.folder
+  );
+  // Make a list of all the files in the output folder
+  const filesInOutputFolder = fs.readdirSync(outputFolder);
+
+  // Make a list of all the files in the input folder
+  let filesInInputFolder: string[] = [];
+  filesInInputFolder = fs.readdirSync(folderPath);
+
+  // Filter out a list that includes only the files that are in the output folder, but not the input folder.
+  var extraFilenames = filesInOutputFolder.filter(function (e: string) {
+    return filesInInputFolder.indexOf(e) === -1;
+  });
+
+  console.log(`extra filenames: ${extraFilenames}`);
+
+  // Delete each file.
+  extraFilenames.forEach((file: string) => {
+    const filePath = path.join(outputFolder, file);
+    fs.unlinkSync(filePath);
+  });
+};
+
+export interface FileFunctionArgs {
+  fileNames: string[];
+  folder: string;
+  folderPath: string;
+}
+
+export interface PartialFileFunctionArgs {
+  fileNames?: string[];
+  folder?: string;
+  folderPath?: string;
+}
 
 /**
  * Go through each folder, collect all the filenames, and
@@ -117,11 +168,7 @@ const loopThroughFiles = (
  */
 const loopThroughFolders = (
   folders: string[],
-  functionToRunOnFiles: (
-    fileNames: string[],
-    folder: string,
-    folderPath: string
-  ) => void,
+  functionToRunOnFiles: (args: FileFunctionArgs) => void,
   articleLinks: string[]
 ) => {
   folders.forEach(function (folder) {
@@ -131,13 +178,7 @@ const loopThroughFolders = (
     generateComponentInPagesDirectory(folder);
     const articleLink = generateArticleLink(folder);
     articleLinks.push(articleLink);
-
-    fs.readdir(folderPath, function (err: unknown, files: string[]) {
-      if (err) {
-        console.log(`Encountered an error: ${err}`);
-      }
-      functionToRunOnFiles(files, folder, folderPath);
-    });
+    processFolder(folderPath, functionToRunOnFiles, { folder: folder });
   });
 
   return articleLinks;
@@ -154,7 +195,7 @@ const main = () => {
       let articleLinks: string[] = [];
       articleLinks = loopThroughFolders(
         folders,
-        loopThroughFiles,
+        compressFilesIfJpeg,
         articleLinks
       );
       console.log(articleLinks);
