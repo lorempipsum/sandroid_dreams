@@ -1,47 +1,40 @@
-import React, { useState } from 'react';
-import 'date-fns';
-import DateFnsUtils from '@date-io/date-fns';
+import React, { useState } from "react";
+import "date-fns";
+import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
-} from '@material-ui/pickers';
+} from "@material-ui/pickers";
 
-import styles from './WhatIsChloeUpTo.module.css';
+import styles from "./WhatIsChloeUpTo.module.css";
 
 const Tose = () => {
   const [activity, setActivity] = useState("Pick a date");
-  const [
-    selectedDate,
-    setSelectedDate,
-  ] = React.useState(
-    new Date()
-  );
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
 
   function formatDate(date) {
     var d = new Date(date),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
       year = d.getFullYear();
 
-    if (month.length < 2)
-      month = '0' + month;
-    if (day.length < 2) day = '0' + day;
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
 
-    return [year, month, day].join('-');
+    return [year, month, day].join("-");
   }
 
   const ACTIVITIES = {
     // key: date
     // value: activity
-    '2021-04-10': 'Fuck all',
+    "2021-04-10": "Fuck all",
   };
 
-  const PLACEHOLDER_ACTIVITY = "Idk but.. probably fuck all";
+  const PLACEHOLDER_ACTIVITY = "No description found for this date.";
 
   const handleDateChange = (date) => {
     const newDate = formatDate(date);
-    let newActivity =
-      ACTIVITIES[newDate];
+    let newActivity = ACTIVITIES[newDate];
     if (newActivity === undefined) {
       newActivity = PLACEHOLDER_ACTIVITY;
     }
@@ -50,21 +43,16 @@ const Tose = () => {
     setSelectedDate(date);
   };
 
-
   return (
     <div className={styles.body}>
       <div className={styles.title}>
-        <h1>
-          What Is Chloe Up To On ...
-        </h1>
+        <h1>What Is Chloe Up To On ...</h1>
       </div>
 
       <div className={styles.dateForm}>
-        <MuiPickersUtilsProvider
-          utils={DateFnsUtils}
-        >
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <KeyboardDatePicker
-          autoOk
+            autoOk
             disableToolbar
             variant="inline"
             format="MM/dd/yyyy"
@@ -73,15 +61,12 @@ const Tose = () => {
             value={selectedDate}
             onChange={handleDateChange}
             KeyboardButtonProps={{
-              'aria-label':
-                'change date',
+              "aria-label": "change date",
             }}
           />
         </MuiPickersUtilsProvider>
       </div>
-      <div className={styles.activity}>
-        {activity}
-      </div>
+      <div className={styles.activity}>{activity}</div>
     </div>
   );
 };
