@@ -166,7 +166,7 @@ export interface FileFunctionArgs {
 
 export interface PartialFileFunctionArgs {
   fileNames?: string[];
-  folder?: string;
+  folder: string;
   folderPath?: string;
 }
 
