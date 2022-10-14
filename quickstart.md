@@ -3,7 +3,7 @@
 
 ## Run the site locally
 
-gatsy develop
+npm run develop
 
 ## Cleanup
 
@@ -12,5 +12,5 @@ npm install
 npm audit fix
 gatsby clean
 
-# Folders 
+# Folders
 

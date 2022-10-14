@@ -11,7 +11,7 @@
     "develop": "npx ts-node ./generate_galleries.ts && npx gatsby develop --host 0.0.0.0",
     "start": "npx gatsby develop",
     "test": "jest",
-    "build": "npxgatsby build",
+    "build": "npx gatsby build",
     "serve": "npx gatsby serve",
     "clean": "npx gatsby clean",
     "deploy": "npx gatsby clean && gatsby build && gh-pages -r https://github.com/lorempipsum/lorempipsum.github.io -d public -b master",

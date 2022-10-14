@@ -129,6 +129,14 @@ const processFolder = (
     `./src/data/images/generatedAlbums/`,
     functionArgs.folder
   );
+
+  // Function to count seconds
+
+
+  // Check if output folder exists, and creat it if it does not
+  if (!fs.existsSync(outputFolder)) {
+    fs.mkdirSync(outputFolder, { recursive: true })};
+
   // Make a list of all the files in the output folder
   const filesInOutputFolder = fs.readdirSync(outputFolder);
 
