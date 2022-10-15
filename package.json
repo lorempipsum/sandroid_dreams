@@ -39,6 +39,7 @@
     "react": "^16.13.1",
     "react-before-after-slider": "^1.0.4",
     "react-dom": "^16.13.1",
+    "simplex-noise": "^4.0.1",
     "use-sound": "^4.0.1"
   },
   "devDependencies": {
