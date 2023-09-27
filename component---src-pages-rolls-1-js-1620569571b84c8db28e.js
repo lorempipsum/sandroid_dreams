@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[18],{g9MH:function(e,t,a){"use strict";a.r(t);var l=a("q1tI"),n=a("7oih"),i=a("Nqvj");t.default=function(e){var t=e.data;return l.createElement(n.a,{title:"The Infinite Photo Roll"},l.createElement("p",null,l.createElement("span",null,"This page will automatically be updated with all the images uploaded to this site.")),l.createElement(i.a,{images:t.allFile.edges.map((function(e){return e.node.childImageSharp}))}))}}}]);
+//# sourceMappingURL=component---src-pages-rolls-1-js-1620569571b84c8db28e.js.map
